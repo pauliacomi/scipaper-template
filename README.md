@@ -1,3 +1,3 @@
-# Shaping-ads-manuscript
+# Manuscript template
 
-Paper for KRICT alumina shaping on common mofs
+Paper template
