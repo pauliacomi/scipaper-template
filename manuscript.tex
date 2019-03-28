@@ -1,0 +1,41 @@
+% Master file
+
+% Documentclass
+% \documentclass[9pt, twoside, twocolumn]{article}
+\documentclass[9pt, twocolumn]{ownarticle}
+
+% Metadata
+\input{setting/metadata}
+
+% Preamble
+\input{setting/own-preamble}
+
+% Graphics
+\graphicspath{ {figs/} }
+
+% SI
+\externaldocument{manuscript-SI}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+% Doc input
+\input{setting/own-doc}
+
+\footnotetext{%
+  \dag~Electronic Supplementary Information (ESI) available: 
+  one PDF file with all referenced supporting information.
+}
+
+\input{docs/introduction}
+\input{docs/materialsmethod}
+\input{docs/resultsdiscussion}
+\input{docs/conclusions}
+\input{docs/acknowledgements}
+
+\bibliography{refs/library}
+
+% End doc
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

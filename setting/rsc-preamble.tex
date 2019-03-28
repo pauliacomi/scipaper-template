@@ -1,0 +1,160 @@
+% !TEX root = ../manuscript.tex
+
+%%%%%%%%%%%%%%%%%%%%%% TEMPLATE
+% RCS Template:
+\usepackage{extsizes}
+\usepackage[super,sort&compress,comma]{natbib}
+\usepackage[version=3]{mhchem}
+\usepackage[left=1.5cm, right=1.5cm, top=1.785cm, bottom=2.0cm]{geometry}
+\usepackage{balance}
+\usepackage{times,mathptmx}
+\usepackage{sectsty}
+\usepackage{lastpage}
+\usepackage[
+  format=plain,
+  justification=justified,
+  singlelinecheck=false,
+  font={stretch=1.125,small,sf},
+  labelfont=bf,
+  labelsep=space
+]{caption}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{fnpos}
+\usepackage[english]{babel}
+\addto{\captionsenglish}{%
+  \renewcommand{\refname}{Notes and references}
+}
+\usepackage{array}
+\usepackage{droidsans}
+\usepackage{charter}
+\usepackage[T1]{fontenc}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{setspace}
+\usepackage[compact]{titlesec}
+
+\definecolor{cream}{RGB}{222,217,201}
+
+%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%% OWN
+%%%%%%%%%%%%%%%%%%%%%% Encodings, fonts and colours
+
+% Font encodings
+% \usepackage{fourier}
+% \usepackage[TS1,T1]{fontenc}
+
+% UNICODE recognition:
+% This package should recognise any UNICODE characters in the text and automatically replace them with their standard macros
+\usepackage[utf8]{inputenc}
+
+% For colour definitions
+% \usepackage{xcolor}
+
+%%%%%%%%%%%%%%%%%%%%%% Bibliography packages and settings
+
+% Natbib package for text references
+% \usepackage[
+%     sectionbib,
+%     round,
+%     super,
+%     comma,
+%     sort&compress
+% ]{natbib}
+
+% Moves references after punctuation
+% \usepackage{natmove}
+% \renewcommand*{\natmovechars}{.}
+
+% Adds bibliography to TOC
+% \usepackage[nottoc]{tocbibind}
+
+%%%%%%%%%%%%%%%%%%%%%% Science-related packages
+
+% AMS maths packages
+\usepackage{
+    amsmath,
+    amsfonts,
+    amsthm,
+    % amssymb
+}
+
+% In-line fractions
+\usepackage{xfrac}
+
+% The SIunitx package enables the \SI{}{} command.
+\usepackage{siunitx}
+
+% The mchem package for formula subscripts using \ce{}
+% \usepackage[version=3]{mhchem} 
+
+%%%%%%%%%%%%%%%%%%%%%% Packages for graphs, tables and listings
+
+% Graphics package and path to graphics.
+\usepackage{graphicx}
+\graphicspath{ {figs/} }
+
+% Writing over figures
+% \usepackage[percent]{overpic} 
+
+% Wrapping around figures
+% \usepackage{wrapfig}
+
+% For better looking captions.
+% \usepackage{caption}
+% \captionsetup{
+%     margin=10pt,
+%     font=footnotesize,
+%     labelfont=bf,
+%     format=plain
+% }
+
+% For the subfigures
+\usepackage{subcaption}
+
+% For float barriers and such
+% \usepackage{float}
+\usepackage[section]{placeins}
+
+% Better tables 
+\usepackage{
+    booktabs,
+    makecell,
+    % array,
+    multirow,
+    tabularx
+}
+
+% For code snippets
+\usepackage{listings}
+
+%%%%%%%%%%%%%%%%%%%%%% References and bookmarks
+
+% Xr:
+% To reference another document, in this case the SI
+\usepackage{xr, xr-hyper}
+
+% Hyperref:
+% This package makes all references within your document clickable. By default, these references will become boxed and colored. This is turned back to normal with the \hypersetup command below.
+\usepackage{hyperref}
+
+% Adding package bookmark improves bookmarks handling.
+% More features and faster updated bookmarks.
+% \usepackage{bookmark}
+
+\hypersetup{
+    % bookmarks=true,                         %% Acrobat bookmarks (default)
+    bookmarksnumbered=true,                 %% Add numbers to bookmarks
+    bookmarksopen=true,                     %% bookmarks default open
+    bookmarksopenlevel=2,                   %% Level 2 bookmarks
+    % backref=true,                         %% add links in bib (default)
+    % pagebackref=true,                     %% in the bibliography (default)
+    % hyperindex=true,                      %% in the index (default)
+    breaklinks=true,                        %% break lines if long
+    colorlinks=false,                       %% colour links
+    urlcolor=blue,                          %% link colour
+    citecolor=blue,	                        %% bibliography link color
+    linkcolor=blue,	                        %% internal link color
+    anchorcolor=blue,                       %% anchor link color
+    linktocpage=false,                      %% pagenumber link in TOC
+    pdfborder={0 0 0}                       %% pdf border settings
+}
