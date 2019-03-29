@@ -1,0 +1,58 @@
+% !TEX root = ../manuscript.tex
+
+\begin{frontmatter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Meta-data block
+%% ---------------
+%% Title, authors and addresses
+%%
+%% use the tnoteref command within \title for footnotes;
+%% use the tnotetext command for the associated footnote;
+%% use the fnref command within \author or \address for footnotes;
+%% use the fntext command for the associated footnote;
+%% use the corref command within \author for corresponding author footnotes;
+%% use the cortext command for the associated footnote;
+%% use the ead command for the email address,
+%% and the form \ead[url] for the home page:
+%%
+%% \title{Title\tnoteref{label1}}
+%% \tnotetext[label1]{}
+%% \author{Name\corref{cor1}\fnref{label2}}
+%% \ead{email address}
+%% \ead[url]{home page}
+%% \fntext[label2]{}
+%% \cortext[cor1]{}
+%% \address{Address\fnref{label3}}
+%% \fntext[label3]{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{\pubtitle{}}
+
+\author[a]{\pubauthA{}\corref{author}}
+\ead{\pubemail{}}
+\author[b]{\pubauthB{}}
+\ead{\pubemail{}}
+
+\cortext[author] {Corresponding author.}
+
+\address[a]{\pubaddrA}
+\address[b]{\pubaddrB}
+
+%% Abstract
+
+\input{docs/abstract}
+
+\begin{keyword}
+    \pubkeywords{}
+\end{keyword}
+
+\end{frontmatter}
+
+
+%%
+%% Start line numbering here if you want
+%%
+% \linenumbers
+
+\bibliographystyle{elsarticle-num}

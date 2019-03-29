@@ -1,14 +1,28 @@
 % Master file
 
 % Documentclass
-% \documentclass[9pt, twoside, twocolumn]{article}
+
+\def\style{0}
+
+\if\style0
 \documentclass[9pt, twocolumn]{ownarticle}
+\fi\if\style1
+\documentclass[12pt, preprint]{elsarticle}
+\fi\if\style2
+\documentclass[9pt, twoside, twocolumn]{article}
+\fi
 
 % Metadata
 \input{setting/metadata}
 
 % Preamble
+\if\style0
 \input{setting/own-preamble}
+\fi\if\style1
+\input{setting/els-preamble}
+\fi\if\style2
+\input{setting/rsc-preamble}
+\fi
 
 % Graphics
 \graphicspath{ {figs/} }
@@ -21,12 +35,13 @@
 \begin{document}
 
 % Doc input
+\if\style0
 \input{setting/own-doc}
-
-\footnotetext{%
-  \dag~Electronic Supplementary Information (ESI) available: 
-  one PDF file with all referenced supporting information.
-}
+\fi\if\style1
+\input{setting/els-doc}
+\fi\if\style2
+\input{setting/rsc-doc}
+\fi
 
 \input{docs/introduction}
 \input{docs/materialsmethod}

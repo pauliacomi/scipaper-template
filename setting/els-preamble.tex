@@ -1,0 +1,91 @@
+% !TEX root = ../manuscript.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LaTeX preamble.
+
+% Font encodings
+\usepackage[T1]{fontenc}       	% Use modern font encodings
+
+% UNICODE recognition:
+% This package should recognise any UNICODE characters in the text and automatically replace them with their standard macros
+\usepackage[utf8]{inputenc}
+
+% Chemical formulas
+\usepackage{mhchem} 	% Formula subscripts using \ce{}
+
+% AMS math packages:
+% Required for proper math display.
+\usepackage{amsmath,amsfonts,amsthm}
+
+% Graphicx:
+\usepackage{graphicx}
+\graphicspath{ {figs/} }
+
+% Subfigures
+\usepackage{subcaption}
+
+% Booktabs:
+% The booktabs package is needed for better looking tables. 
+\usepackage{booktabs, makecell}
+
+% The SIunitx package enables the \SI{}{} command.
+\usepackage{siunitx}
+
+% Placeins For organising floats in the SI
+\usepackage[section]{placeins}
+
+% URL:
+% Clickable URL's can be made with this package: \url{}.
+\usepackage{url}
+
+% Caption: For better looking captions.
+\usepackage{caption}
+
+% Multi rows for tables
+\usepackage{multirow}
+
+%%%%%%%%%%%%%%%%%%%%%% References and bookmarks
+
+% Xr:
+% To reference another document, in this case the SI
+\usepackage{xr, xr-hyper}
+
+% Hyperref:
+% This package makes all references within your document clickable. By default, these references will become boxed and colored. This is turned back to normal with the \hypersetup command below.
+\usepackage{hyperref}
+\hypersetup{colorlinks=false,pdfborder=0 0 0}
+
+% Todo notes:
+% Used for notes and annotations.
+\usepackage{todonotes}
+
+% For code snippets
+\usepackage{listings}
+\lstset{language=Python}
+
+
+%% The lineno packages adds line numbers. Start line numbering with
+%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+%% for the whole article with \linenumbers after \end{frontmatter}.
+\usepackage{lineno}
+
+%% natbib.sty is loaded by default. However, natbib options can be
+%% provided with \biboptions{...} command. Following options are
+%% valid:
+
+%%   round  -  round parentheses are used (default)
+%%   square -  square brackets are used   [option]
+%%   curly  -  curly braces are used      {option}
+%%   angle  -  angle brackets are used    <option>
+%%   semicolon  -  multiple citations separated by semi-colon
+%%   colon  - same as semicolon, an earlier confusion
+%%   comma  -  separated by comma
+%%   numbers-  selects numerical citations
+%%   super  -  numerical citations as superscripts
+%%   sort   -  sorts multiple citations according to order in ref. list
+%%   sort&compress   -  like sort, but also compresses numerical citations
+%%   compress - compresses without sorting
+%%
+%% \biboptions{comma,round}
+
+% \biboptions{}
