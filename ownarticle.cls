@@ -46,6 +46,7 @@
 \newcommand{\keywords}[1]{\def\@keywords{#1}}
 \newcommand{\matmethods}[1]{\def\@matmethods{#1}}
 \newcommand{\acknow}[1]{\def\@acknow{#1}}
+\newcommand{\sep}[0]{; }
 
 %%%%%%%%%%%%%%%%%%%%%% Fonts and language
 
@@ -370,11 +371,22 @@ THE ABSTRACT\vskip12pt}\let\go\relax\fi
 }%
 \vskip10pt%
 \noindent
-{\parbox{\dimexpr\linewidth}{%
-{
- \keywordsfont \@ifundefined{@keywords}{}{\@keywords}}%
-}}%
-\vskip12pt%
+\@ifundefined{@abstractadd}{}{%
+{%
+\parbox{\dimexpr\linewidth}{%
+ \abstractaddfont \@abstractadd}%
+}%
+\vskip10pt%
+}%
+\noindent
+\@ifundefined{@keywords}{}{%
+{%
+\parbox{\dimexpr\linewidth}{%
+ \keywordsfont %
+ \textbf{Keywords:} \@keywords}%
+}%
+\vskip10pt%
+}%
 }
 
 %% Manual adjustment to line up main content with line numbers
