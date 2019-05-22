@@ -33,6 +33,7 @@
 \def\thepage{S\arabic{page}}
 \renewcommand*\thefigure{S\arabic{figure}}
 \renewcommand*\thetable{S\arabic{table}}
+\renewcommand*\theequation{S\arabic{equation}}
 \AtBeginDocument{%
     \renewcommand*\citenumfont[1]{S#1}%
     \renewcommand*\bibnumfmt[1]{(S#1)}%
@@ -41,6 +42,7 @@
 
 %% Article meta data additional fields
 \newcommand{\contact}[1]{\def\@contact{#1}}
+\newcommand{\equalcontrib}[1]{\def\@equalcontrib{#1}}
 \newcommand{\doi}[1]{\def\@doi{#1}}
 \newcommand{\leadauthor}[1]{\def\@leadauthor{#1}}
 \newcommand{\keywords}[1]{\def\@keywords{#1}}
@@ -158,7 +160,6 @@
 
 %% Hyperlinking
 \RequirePackage[colorlinks=true, allcolors=blue]{hyperref}
-
 
 %%%%%%%%%%%%%%%%%%%%%% 
 %%%%%%%%%%%%%%%%%%%%%% Setup
@@ -404,6 +405,8 @@ THE ABSTRACT\vskip12pt}\let\go\relax\fi
 \vskip10pt% 21pts between base of title and base of author line
 {\centering \@author\par}
 \vskip8pt% 16pts between base of affiliations and base of contact line 
+{\centering \headerfont \@ifundefined{@equalcontrib}{}{%
+\dag~these authors contributed equally \@equalcontrib}\par}
 {\centering \contactfont \@ifundefined{@contact}{}{* \@contact}\par}
 \vspace*{\fill}%
 }
@@ -414,6 +417,8 @@ THE ABSTRACT\vskip12pt}\let\go\relax\fi
 \vskip10pt% 21pts between base of title and base of author line
 {\raggedright \@author\par}
 \vskip8pt% 16pts between base of affiliations and base of contact line 
+{\raggedright \headerfont \@ifundefined{@equalcontrib}{}{%
+\dag~these authors contributed equally \@equalcontrib}\par}
 {\raggedright \contactfont \@ifundefined{@contact}{}{* \@contact}\par}
 \vskip12pt
 {%
