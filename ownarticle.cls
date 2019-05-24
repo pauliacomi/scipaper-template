@@ -203,7 +203,7 @@
 \RequirePackage{authblk}
 \setlength{\affilsep}{8.5pt} % 16.5pts between base of author line and base of affil line
 \renewcommand\Authfont{\color{color0}\normalfont\sffamily\bfseries\fontsize{9}{11}\selectfont}
-\renewcommand\Affilfont{\color{color0}\normalfont\sffamily\fontsize{7}{8}\selectfont}
+\renewcommand\Affilfont{\color{color0}\normalfont\sffamily\fontsize{6}{8}\selectfont}
 \makeatletter
 \renewcommand\AB@affilsepx{\newline\protect\Affilfont}
 \makeatother
@@ -398,12 +398,17 @@ THE ABSTRACT\vskip12pt}\let\go\relax\fi
 \renewcommand{\@maketitle}{%
 \ifthenelse{\boolean{shortintro}}
 {
+% patch command
+\makeatletter
+\patchcmd{\@author}{\raggedright}{\centering}{}{}
+\makeatother
+%
 \topskip0pt
 \vspace*{\fill}%
 {\centering\baselineskip= 24pt\subtitlefont Supplementary Information for\par}%
 {\centering\baselineskip= 24pt\titlefont \@title\par}%
 \vskip10pt% 21pts between base of title and base of author line
-{\centering \@author\par}
+{\raggedright \@author \par}
 \vskip8pt% 16pts between base of affiliations and base of contact line 
 {\centering \headerfont \@ifundefined{@equalcontrib}{}{%
 \dag~these authors contributed equally \@equalcontrib}\par}
