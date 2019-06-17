@@ -1,5 +1,17 @@
 % !TEX root = ../manuscript.tex
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% In an RSC manuscript the preamble contains
+%%      - the RSC template
+%%      - extra packages imported
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Latex preamble
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %%%%%%%%%%%%%%%%%%%%%% TEMPLATE
 % RCS Template:
 \usepackage{extsizes}
@@ -35,84 +47,36 @@
 
 \definecolor{cream}{RGB}{222,217,201}
 
-%%%%%%%%%%%%%%%%%%%%%% 
 %%%%%%%%%%%%%%%%%%%%%% OWN
-%%%%%%%%%%%%%%%%%%%%%% Encodings, fonts and colours
 
-% Font encodings
-% \usepackage{fourier}
-% \usepackage[TS1,T1]{fontenc}
+%%%%%%%%%%%%%%%%%%%%%% Fonts and language
 
 % UNICODE recognition:
-% This package should recognise any UNICODE characters in the text and automatically replace them with their standard macros
 \usepackage[utf8]{inputenc}
 
-% For colour definitions
-% \usepackage{xcolor}
-
-%%%%%%%%%%%%%%%%%%%%%% Bibliography packages and settings
-
-% Natbib package for text references
-% \usepackage[
-%     sectionbib,
-%     round,
-%     super,
-%     comma,
-%     sort&compress
-% ]{natbib}
-
-% Moves references after punctuation
-% \usepackage{natmove}
-% \renewcommand*{\natmovechars}{.}
-
-% Adds bibliography to TOC
-% \usepackage[nottoc]{tocbibind}
-
-%%%%%%%%%%%%%%%%%%%%%% Science-related packages
+% Font encodings
+% \usepackage[TS1,T1]{fontenc}
 
 % AMS maths packages
 \usepackage{
     amsmath,
     amsfonts,
     amsthm,
-    % amssymb
+    amssymb
 }
 
-% In-line fractions
-\usepackage{xfrac}
+%%%%%%%%%%%%%%%%%%%%%% Graphics packages, tables and listings
 
-% The SIunitx package enables the \SI{}{} command.
-\usepackage{siunitx}
-
-% The mchem package for formula subscripts using \ce{}
-% \usepackage[version=3]{mhchem} 
-
-%%%%%%%%%%%%%%%%%%%%%% Packages for graphs, tables and listings
-
-% Graphics package and path to graphics.
+% Graphicx
 \usepackage{graphicx}
-\graphicspath{ {figs/} }
 
-% Writing over figures
-% \usepackage[percent]{overpic} 
-
-% Wrapping around figures
-% \usepackage{wrapfig}
-
-% For better looking captions.
-% \usepackage{caption}
-% \captionsetup{
-%     margin=10pt,
-%     font=footnotesize,
-%     labelfont=bf,
-%     format=plain
-% }
-
-% For the subfigures
-\usepackage{subcaption}
-
-% For float barriers and such
+% Floats
 % \usepackage{float}
+
+% Color definitions
+% \usepackage{xcolor}
+
+% For the floatbarrier macro
 \usepackage[section]{placeins}
 
 % Better tables 
@@ -124,8 +88,32 @@
     tabularx
 }
 
+% Better captions 
+\usepackage{caption}
+
+% Subfigures
+\usepackage{subcaption}
+
 % For code snippets
 \usepackage{listings}
+
+% Todo notes
+% Used for notes and annotations.
+\usepackage{todonotes}
+
+%%%%%%%%%%%%%%%%%%%%%% Science-related packages
+
+% In-line fractions
+\usepackage{xfrac}
+
+% The SIunitx package enables the \SI{}{} command.
+\usepackage{siunitx}
+\sisetup{detect-weight=true, detect-family=true}
+
+% The mchem package for formula subscripts using \ce{}
+% \usepackage[version=3]{mhchem} 
+
+%%%%%%%%%%%%%%%%%%%%%% Bibliography packages and settings
 
 %%%%%%%%%%%%%%%%%%%%%% References and bookmarks
 
@@ -133,14 +121,8 @@
 % To reference another document, in this case the SI
 \usepackage{xr, xr-hyper}
 
-% Hyperref:
-% This package makes all references within your document clickable. By default, these references will become boxed and colored. This is turned back to normal with the \hypersetup command below.
+%% Hyperlinking
 \usepackage{hyperref}
-
-% Adding package bookmark improves bookmarks handling.
-% More features and faster updated bookmarks.
-% \usepackage{bookmark}
-
 \hypersetup{
     % bookmarks=true,                         %% Acrobat bookmarks (default)
     bookmarksnumbered=true,                 %% Add numbers to bookmarks

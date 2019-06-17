@@ -1,0 +1,141 @@
+% !TEX root = ../manuscript.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% In an ACS manuscript the preamble contains
+%%      - extra packages imported
+%%      - paper title
+%%      - paper metadata
+%%      - paper keywords
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Latex preamble
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%% Fonts and language
+
+% UNICODE recognition:
+% This package should recognise any UNICODE characters in the text and automatically replace them with their standard macros
+\usepackage[utf8]{inputenc}
+
+% Font encodings
+\usepackage[TS1,T1]{fontenc}
+
+% AMS maths packages
+\usepackage{
+    amsmath,
+    amsfonts,
+    amsthm,
+    amssymb
+}
+
+%%%%%%%%%%%%%%%%%%%%%% Graphics packages, tables and listings
+
+% Graphicx:
+\usepackage{graphicx}
+
+% Floats
+\usepackage{float}
+
+% Color definitions
+\usepackage{xcolor}
+
+% For the floatbarrier macro
+\usepackage[section]{placeins}
+
+% Better tables
+\usepackage{
+    booktabs,
+    makecell,
+    array,
+    multirow,
+    tabularx
+}
+
+% Better captions 
+\usepackage{caption}
+
+% Subfigures
+\usepackage{subcaption}
+
+% For code snippets
+\usepackage{listings}
+
+% Todo notes
+% Used for notes and annotations.
+\usepackage{todonotes}
+
+%%%%%%%%%%%%%%%%%%%%%% Science-related packages
+
+% In-line fractions
+\usepackage{xfrac}
+
+% The SIunitx package enables the \SI{}{} command.
+\usepackage{siunitx}
+\sisetup{detect-weight=true, detect-family=true}
+
+% The mchem package for formula subscripts using \ce{}
+\usepackage[version=4]{mhchem}
+
+%%%%%%%%%%%%%%%%%%%%%% Bibliography packages and settings
+
+%%%%%%%%%%%%%%%%%%%%%% References and bookmarks
+
+% Xr:
+% To reference another document, in this case the SI
+\usepackage{xr, xr-hyper}
+
+%% Hyperlinking
+\usepackage{hyperref}
+\hypersetup{colorlinks=false, pdfborder=0 0 0}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Title
+%% -----
+%% The document title should be given as usual. Some journals require
+%% a running title from the author: this should be supplied as an
+%% optional argument to \title.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{\pubtitle{}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Meta-data block
+%% ---------------
+%% Each author should be given as a separate \author command.
+%%
+%% Corresponding authors should have an e-mail given after the author
+%% name as an \email command. Phone and fax numbers can be given
+%% using \phone and \fax, respectively; this information is optional.
+%%
+%% The affiliation of authors is given after the authors; each
+%% \affiliation command applies to all preceding authors not already
+%% assigned an affiliation.
+%%
+%% The affiliation takes an option argument for the short name.  This
+%% will typically be something like "University of Somewhere".
+%%
+%% The \altaffiliation macro should be used for new address, etc.
+%% On the other hand, \alsoaffiliation is used on a per author basis
+%% when authors are associated with multiple institutions.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author{\pubauthA{}}
+\affiliation{\pubaddrA{}}
+\altaffiliation{Contributed equally to this work}
+\author{\pubauthB{}}
+\affiliation{\pubaddrA{}}
+\alsoaffiliation{\pubaddrB{}}
+\altaffiliation{Contributed equally to this work}
+
+\email{\pubemail}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Keywords
+%% --------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\sep}[0]{,}
+\keywords{\pubkeywords{}}

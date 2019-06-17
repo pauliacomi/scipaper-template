@@ -2,37 +2,19 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% In an OWN manuscript the preamble contains
-%%      - paper title
-%%      - paper metadata
+%% In an ACS manuscript, the document insert contains
+%%      - a graphical insert
 %%      - paper abstract
-%%      - paper keywords
-%%      - vertical space adjustment between text and abstract
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Title
-%% -----
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title{\pubtitle{}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Meta-data block
-%% ---------------
+%% Graphical insert
+%% ----------------
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\author[a, *]{\pubauthA{}\textsuperscript{\dag, }}
-\author[a, b]{\pubauthB{}\textsuperscript{\dag, }}
-\leadauthor{P. Iacomi}
-\contact{\pubemail{}}
-\equalcontrib{}
-
-\affil[a]{\pubaddrA{}}
-\affil[b]{\pubaddrB{}}
-
-\doi{10.0000/xxxxxxxxxxx}
+\begin{tocentry}
+\end{tocentry}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Abstract
@@ -44,15 +26,24 @@
 \end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Keywords
+%% Abstract
 %% --------
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\keywords{\pubkeywords{}}
+\begin{acknowledgement}
+    \input{docs/acknowledgements.tex}%
+\end{acknowledgement}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Adjusting vertical space
-%% ------------------------
+%% Supporting info
+%% ---------------
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% \verticaladjustment{0pt}
+\begin{suppinfo}
+
+    Electronic Supporting Information available:
+    \begin{itemize}
+      \item manuscript-SI.pdf: PDF file with all referenced supporting information
+    \end{itemize}
+    
+\end{suppinfo}
