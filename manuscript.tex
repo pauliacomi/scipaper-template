@@ -2,18 +2,23 @@
 
 % Documentclass
 
-\def\style{0}
+\def\style{2}
 
 \if\style0
 \documentclass[9pt, twocolumn]{ownarticle}
-\fi\if\style1
+\fi\if\style1 % Elsevier publications
 \documentclass[12pt, preprint]{elsarticle}
-\fi\if\style2
+\fi\if\style2 % RCS publications
 \documentclass[9pt, twoside, twocolumn]{article}
+\fi\if\style3 % ACS publications
+\documentclass[journal=cmatex,manuscript=article]{achemso}
 \fi
 
 % Metadata
 \input{setting/metadata}
+
+% Filling text
+\usepackage{lipsum}
 
 % Preamble
 \if\style0
@@ -22,6 +27,8 @@
 \input{setting/els-preamble}
 \fi\if\style2
 \input{setting/rsc-preamble}
+\fi\if\style3
+\input{setting/acs-preamble}
 \fi
 
 % Graphics
@@ -41,6 +48,8 @@
 \input{setting/els-doc}
 \fi\if\style2
 \input{setting/rsc-doc}
+\fi\if\style3
+\input{setting/acs-doc}
 \fi
 
 \input{docs/introduction}

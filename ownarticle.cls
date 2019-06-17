@@ -108,6 +108,7 @@
 % For code snippets
 \RequirePackage{listings}
 
+% Todo notes
 \RequirePackage{todonotes}
 
 %%%%%%%%%%%%%%%%%%%%%% Science-related packages
@@ -120,7 +121,7 @@
 \sisetup{detect-weight=true, detect-family=true}
 
 % The mchem package for formula subscripts using \ce{}
-\RequirePackage[version=3]{mhchem}
+\RequirePackage[version=4]{mhchem}
 
 %%%%%%%%%%%%%%%%%%%%%% Bibliography packages and settings
 
@@ -146,11 +147,9 @@
 }
 \renewcommand\bibfont{\normalfont\sffamily\fontsize{6}{8}\selectfont} % set font to be sans serif
 
-\makeatletter
 \renewcommand\@biblabel[1]{ #1.} % Remove brackets from label
 \def\tagform@#1{\maketag@@@{\bfseries(\ignorespaces#1\unskip\@@italiccorr)}}
 \renewcommand{\eqref}[1]{\textup{{\normalfont Eq.~(\ref{#1}}\normalfont)}}
-\makeatother
 
 %%%%%%%%%%%%%%%%%%%%%% References and bookmarks
 
@@ -194,9 +193,7 @@
 \renewcommand\UrlFont{\color{black}\sffamily}
 
 %% Add bolding to math where needed
-\makeatletter
 \g@addto@macro\bfseries{\boldmath}
-\makeatother
 
 %%%%%%%%%%%%%%%%%%%%%% Author and affiliation
 
@@ -204,9 +201,7 @@
 \setlength{\affilsep}{8.5pt} % 16.5pts between base of author line and base of affil line
 \renewcommand\Authfont{\color{color0}\normalfont\sffamily\bfseries\fontsize{9}{11}\selectfont}
 \renewcommand\Affilfont{\color{color0}\normalfont\sffamily\fontsize{6}{8}\selectfont}
-\makeatletter
 \renewcommand\AB@affilsepx{\newline\protect\Affilfont}
-\makeatother
 \renewcommand\Authands{, and }
 
 %%%%%%%%%%%%%%%%%%%%%% Graphics, tables etc
@@ -239,9 +234,7 @@
 \newcommand{\addtabletext}[1]{{\setlength{\leftskip}{9pt}\fontsize{7}{9}\selectfont#1}}
 
 %% Equation numbering - use square brackets
-\makeatletter
 \renewcommand\tagform@[1]{\maketag@@@ {[\ignorespaces #1\unskip \@@italiccorr ]}}
-\makeatother
 
 %% For numbering just one line of an equation
 \newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
@@ -265,7 +258,6 @@
   \foreach \x in {\rightstartlineno,...,\rightendlineno}{\noindent\x\\}%
 }
 
-\makeatletter
 \fancypagestyle{plain}{%
     \ifthenelse{\boolean{toprule}}{%
         \renewcommand{\headrulewidth}{3pt}%
@@ -273,7 +265,6 @@
     \fancyfoot[R]{\footerfont \textit{Preprint} \hspace{7pt}|\hspace{7pt}\textbf{\today}\hspace{7pt}|\hspace{7pt}\textbf{\thepage\textendash\pageref{LastPage}}}
    \fancyfoot[L]{\footerfont\@ifundefined{@doi}{}{DOI: \@doi}}
 }
-\makeatother
 
 % Headers
 \fancyhead[LE,RO]{}
@@ -282,7 +273,6 @@
 \lfoot{}%
 \cfoot{}%
 \rfoot{}%
-\makeatletter
 \fancyfoot[R]{\footerfont \textit{Preprint}\hspace{7pt}|\hspace{7pt}\textbf{\today}\hspace{7pt}|\hspace{7pt}\textbf{\thepage}}
 \fancyfoot[L]{\footerfont\@ifundefined{@leadauthor}{}{\@leadauthor}\ifnum \value{authors} > 1\textit{ et al.}\fi}
 
@@ -306,7 +296,6 @@
     }
   \fi
 }
-\makeatother
 
 %%%%%%%%%%%%%%%%%%%%%% Typesetting
 
@@ -397,11 +386,9 @@ THE ABSTRACT\vskip12pt}\let\go\relax\fi
 % %% Custom title page 
 \renewcommand{\@maketitle}{%
 \ifthenelse{\boolean{shortintro}}
-{
+{%
 % patch command
-\makeatletter
 \patchcmd{\@author}{\raggedright}{\centering}{}{}
-\makeatother
 %
 \topskip0pt
 \vspace*{\fill}%
