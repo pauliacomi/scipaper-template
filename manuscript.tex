@@ -4,11 +4,11 @@
 
 \def\style{2}
 
-\if\style0
+\if\style0    % Own publication template
 \documentclass[9pt, twocolumn]{ownarticle}
 \fi\if\style1 % Elsevier publications
 \documentclass[12pt, preprint]{elsarticle}
-\fi\if\style2 % RCS publications
+\fi\if\style2 % RSC publications
 \documentclass[9pt, twoside, twocolumn]{article}
 \fi\if\style3 % ACS publications
 \documentclass[journal=cmatex,manuscript=article]{achemso}
