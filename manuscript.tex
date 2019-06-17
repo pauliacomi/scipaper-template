@@ -2,7 +2,7 @@
 
 % Documentclass
 
-\def\style{2}
+\def\style{0}
 
 \if\style0    % Own publication template
 \documentclass[9pt, twocolumn]{ownarticle}
@@ -56,7 +56,16 @@
 \input{docs/materialsmethod}
 \input{docs/resultsdiscussion}
 \input{docs/conclusions}
+
+% Doc end input
+\if\style3
+\input{setting/acs-doc-end}
+\else
+\section*{Acknowledgements}
 \input{docs/acknowledgements}
+\section*{Author contributions}
+\input{docs/contributions}
+\fi
 
 \bibliography{refs/biblio}
 

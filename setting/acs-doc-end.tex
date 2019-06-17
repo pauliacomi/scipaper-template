@@ -2,25 +2,31 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% In an ACS manuscript, the document insert contains
-%%      - a graphical insert
-%%      - paper abstract
+%% In an ACS manuscript, the document end insert contains
+%%      - acknowledgements
+%%      - supporting info
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Graphical insert
+%% Acknowledgements
 %% ----------------
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{tocentry}
-\end{tocentry}
+\begin{acknowledgement}
+    \input{docs/acknowledgements.tex}%
+\end{acknowledgement}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Abstract
-%% --------
+%% Supporting info
+%% ---------------
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{abstract}
-    \input{docs/abstract.tex}%
-\end{abstract}
+\begin{suppinfo}
+
+    Electronic Supporting Information available:
+    \begin{itemize}
+      \item manuscript-SI.pdf: PDF file with all referenced supporting information
+    \end{itemize}
+    
+\end{suppinfo}
