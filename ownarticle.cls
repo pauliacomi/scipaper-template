@@ -165,8 +165,8 @@
 %%%%%%%%%%%%%%%%%%%%%% General page setup
 
 \RequirePackage[twoside,%
-				letterpaper,includeheadfoot,%
-				layoutsize={8.125in,10.875in},%
+                letterpaper,includeheadfoot,%
+                layoutsize={8.125in,10.875in},%
                 layouthoffset=0.1875in,%
                 layoutvoffset=0.0625in,%
                 left=38.5pt,%
@@ -241,22 +241,10 @@
 
 %%%%%%%%%%%%%%%%%%%%%% Headers and footers
 
-%% Headers and footers
+%% Fancyhdr styling
 \RequirePackage{fancyhdr}  % custom headers/footers
 \RequirePackage{lastpage}  % Number of pages in the document
 \pagestyle{fancy}          % Enables the custom headers/footers
-
-%% For the line numbers overlay
-\def\leftlinenos{%
-  \pgfmathtruncatemacro{\leftstartlineno}{2*(\thepage - 1)*62 + 1}%
-  \pgfmathtruncatemacro{\leftendlineno}{(2*(\thepage - 1) + 1)*62}%
-  \foreach \x in {\leftstartlineno,...,\leftendlineno}{\noindent\x\\}%
-}
-\def\rightlinenos{%
-  \pgfmathtruncatemacro{\rightstartlineno}{(2*(\thepage - 1) + 1)*62 + 1}%
-  \pgfmathtruncatemacro{\rightendlineno}{(2*\thepage)*62}%
-  \foreach \x in {\rightstartlineno,...,\rightendlineno}{\noindent\x\\}%
-}
 
 \fancypagestyle{plain}{%
     \ifthenelse{\boolean{toprule}}{%
@@ -269,6 +257,7 @@
 % Headers
 \fancyhead[LE,RO]{}
 \fancyhead[LO,RE]{}
+
 % Footers
 \lfoot{}%
 \cfoot{}%
@@ -282,20 +271,17 @@
 %%%%%%%%%%%%%%%%%%%%%% Line numbers
 
 % Use footer routine for line numbers
-\AtBeginDocument{
-  \if@switchlineno
-    \ifthenelse{\boolean{singlecolumn}}{
-      % use lineno package if singlecolumn
-      \RequirePackage{lineno}
-      \linenumbers
-    }{% use tikz if twocolumn
-    \fancyfoot[C]{\begin{tikzpicture}[remember picture,overlay]
-    \node at([xshift=1.5em,yshift=\dimexpr -0.0625in-53pt] current page.north west)[anchor=north west,text width=3em,font=\rmfamily,align=right] {\leftlinenos};%
-    \node at([xshift=-1.5em,yshift=\dimexpr -0.0625in-53pt] current page.north east)[anchor=north east,text width=3em,font=\rmfamily,align=left] {\rightlinenos};%
-    \end{tikzpicture}}
-    }
-  \fi
-}
+\if@switchlineno
+  \ifthenelse{\boolean{singlecolumn}}{
+    % use lineno package if singlecolumn
+    \RequirePackage{lineno}
+    \linenumbers
+  }{% use lineno in switch mode if doublecolumn
+  \RequirePackage[switch]{lineno}
+  \linenumbers
+  }
+\fi
+\renewcommand\linenumberfont{\normalfont\tiny\sffamily}
 
 %%%%%%%%%%%%%%%%%%%%%% Typesetting
 
