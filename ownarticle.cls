@@ -275,13 +275,14 @@
   \ifthenelse{\boolean{singlecolumn}}{
     % use lineno package if singlecolumn
     \RequirePackage{lineno}
+    \renewcommand\linenumberfont{\normalfont\tiny\sffamily}
     \linenumbers
   }{% use lineno in switch mode if doublecolumn
   \RequirePackage[switch]{lineno}
+  \renewcommand\linenumberfont{\normalfont\tiny\sffamily}
   \linenumbers
   }
 \fi
-\renewcommand\linenumberfont{\normalfont\tiny\sffamily}
 
 %%%%%%%%%%%%%%%%%%%%%% Typesetting
 
