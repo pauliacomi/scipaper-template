@@ -1,9 +1,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ownarticle.cls, v1
+% ownarticle.cls, v2.0
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ownarticle}[15/01/2019, v1]
+\ProvidesClass{ownarticle}[15/01/2019, v2.0]
 \AtEndOfClass{\RequirePackage{microtype}}
 
 % Option for line numbers
@@ -40,16 +40,6 @@
 }
 \fi
 
-%% Article meta data additional fields
-\newcommand{\contact}[1]{\def\@contact{#1}}
-\newcommand{\equalcontrib}[1]{\def\@equalcontrib{#1}}
-\newcommand{\doi}[1]{\def\@doi{#1}}
-\newcommand{\leadauthor}[1]{\def\@leadauthor{#1}}
-\newcommand{\keywords}[1]{\def\@keywords{#1}}
-\newcommand{\matmethods}[1]{\def\@matmethods{#1}}
-\newcommand{\acknow}[1]{\def\@acknow{#1}}
-\newcommand{\sep}[0]{; }
-
 %%%%%%%%%%%%%%%%%%%%%% Fonts and language
 
 \RequirePackage[utf8]{inputenc}
@@ -76,6 +66,8 @@
 \RequirePackage{afterpage}
 \RequirePackage{xcolor}
 \RequirePackage{tikz}
+\usetikzlibrary{svg.path}
+\usetikzlibrary{calc}
 \RequirePackage[framemethod=tikz]{mdframed}
 
 % Floats
@@ -158,7 +150,12 @@
 \RequirePackage{xr, xr-hyper}
 
 %% Hyperlinking
-\RequirePackage[colorlinks=true, allcolors=blue]{hyperref}
+\RequirePackage[
+  colorlinks=true, 
+  allcolors=blue,
+  pagebackref=false
+]{hyperref}
+
 
 %%%%%%%%%%%%%%%%%%%%%% 
 %%%%%%%%%%%%%%%%%%%%%% Setup
@@ -239,6 +236,37 @@
 %% For numbering just one line of an equation
 \newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
 
+%% ORCID logo
+\definecolor{orcidlogocol}{HTML}{A6CE39}
+\tikzset{
+  orcidlogo/.pic={
+    \fill[orcidlogocol] svg{M256,128c0,70.7-57.3,128-128,128C57.3,256,0,198.7,0,128C0,57.3,57.3,0,128,0C198.7,0,256,57.3,256,128z};
+    \fill[white] svg{M86.3,186.2H70.9V79.1h15.4v48.4V186.2z}
+                 svg{M108.9,79.1h41.6c39.6,0,57,28.3,57,53.6c0,27.5-21.5,53.6-56.8,53.6h-41.8V79.1z M124.3,172.4h24.5c34.9,0,42.9-26.5,42.9-39.7c0-21.5-13.7-39.7-43.7-39.7h-23.7V172.4z}
+                 svg{M88.7,56.8c0,5.5-4.5,10.1-10.1,10.1c-5.6,0-10.1-4.6-10.1-10.1c0-5.6,4.5-10.1,10.1-10.1C84.2,46.7,88.7,51.3,88.7,56.8z};
+  }
+x}
+
+%% Article meta data additional fields
+\newcommand{\contact}[1]{\def\@contact{#1}}
+\newcommand{\equalcontrib}[1]{\def\@equalcontrib{#1}}
+\newcommand{\pubdoi}[1]{\def\@pubdoi{#1}}
+\newcommand{\leadauthor}[1]{\def\@leadauthor{#1}}
+\newcommand{\keywords}[1]{\def\@keywords{#1}}
+\newcommand{\matmethods}[1]{\def\@matmethods{#1}}
+\newcommand{\acknow}[1]{\def\@acknow{#1}}
+\newcommand{\orcid}[1]{
+  \href{https://orcid.org/#1}{\mbox{
+    \begin{tikzpicture}[overlay,remember picture]
+      \coordinate (A);
+      \coordinate (B) at ($(A)-(6pt,-8pt)$);
+    \end{tikzpicture}
+    \begin{tikzpicture}[overlay,remember picture,yscale=-0.04,xscale=0.04,transform shape]
+      \pic at (B) {orcidlogo};
+    \end{tikzpicture}
+    }{}}}
+\newcommand{\sep}[0]{; }
+
 %%%%%%%%%%%%%%%%%%%%%% Headers and footers
 
 %% Fancyhdr styling
@@ -251,7 +279,7 @@
         \renewcommand{\headrulewidth}{3pt}%
     }{}
     \fancyfoot[R]{\footerfont \textit{Preprint} \hspace{7pt}|\hspace{7pt}\textbf{\today}\hspace{7pt}|\hspace{7pt}\textbf{\thepage\textendash\pageref{LastPage}}}
-   \fancyfoot[L]{\footerfont\@ifundefined{@doi}{}{DOI: \@doi}}
+    \fancyfoot[L]{\footerfont\@ifundefined{@pubdoi}{}{DOI: \@pubdoi}}
 }
 
 % Headers
