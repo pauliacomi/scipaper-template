@@ -156,6 +156,7 @@
   pagebackref=false
 ]{hyperref}
 
+\RequirePackage{doi}
 
 %%%%%%%%%%%%%%%%%%%%%% 
 %%%%%%%%%%%%%%%%%%%%%% Setup
