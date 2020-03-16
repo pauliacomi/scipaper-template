@@ -19,9 +19,9 @@
 \fancypagestyle{plain}{
 
 %%%HEADER%%%
-\fancyhead[C]{\includegraphics[width=18.5cm]{head_foot/header_bar}}
-\fancyhead[L]{\hspace{0cm}\vspace{1.5cm}\includegraphics[height=30pt]{head_foot/journal_name}}
-\fancyhead[R]{\hspace{0cm}\vspace{1.7cm}\includegraphics[height=55pt]{head_foot/RSC_LOGO_CMYK}}
+\fancyhead[C]{\includegraphics[width=18.5cm]{setting/rsc/head_foot/header_bar}}
+\fancyhead[L]{\hspace{0cm}\vspace{1.5cm}\includegraphics[height=30pt]{setting/rsc/head_foot/journal_name}}
+\fancyhead[R]{\hspace{0cm}\vspace{1.7cm}\includegraphics[height=55pt]{setting/rsc/head_foot/RSC_LOGO_CMYK}}
 \renewcommand{\headrulewidth}{0pt}
 }
 %%%END OF HEADER%%%
@@ -59,9 +59,9 @@
 
 %%%FOOTER%%%
 \fancyfoot{}
-\fancyfoot[LO,RE]{\vspace{-7.1pt}\includegraphics[height=9pt]{head_foot/LF}}
-\fancyfoot[CO]{\vspace{-7.1pt}\hspace{13.2cm}\includegraphics{head_foot/RF}}
-\fancyfoot[CE]{\vspace{-7.2pt}\hspace{-14.2cm}\includegraphics{head_foot/RF}}
+\fancyfoot[LO,RE]{\vspace{-7.1pt}\includegraphics[height=9pt]{setting/rsc/head_foot/LF}}
+\fancyfoot[CO]{\vspace{-7.1pt}\hspace{13.2cm}\includegraphics{setting/rsc/head_foot/RF}}
+\fancyfoot[CE]{\vspace{-7.2pt}\hspace{-14.2cm}\includegraphics{setting/rsc/head_foot/RF}}
 \fancyfoot[RO]{\footnotesize{\sffamily{1--\pageref{LastPage} ~\textbar  \hspace{2pt}\thepage}}}
 \fancyfoot[LE]{\footnotesize{\sffamily{\thepage~\textbar\hspace{3.45cm} 1--\pageref{LastPage}}}}
 \fancyhead{}
@@ -101,7 +101,7 @@
 %% -----
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-    \includegraphics{head_foot/DOI} & \noindent\LARGE{%
+    \includegraphics{setting/rsc/head_foot/DOI} & \noindent\LARGE{%
       \textbf{\pubtitle{}\(^{\dag}\)}%
     } \\%Article title goes here
 %
@@ -121,7 +121,7 @@
 %% --------
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-    \includegraphics{head_foot/dates} & \noindent\normalsize{%
+    \includegraphics{setting/rsc/head_foot/dates} & \noindent\normalsize{%
       \input{docs/abstract.tex}%
     } \\%The abstract goes here
 %
@@ -145,8 +145,8 @@
 
 %%%FOOTNOTES%%%
 
-\footnotetext{\textit{\(^{a}\)~\pubaddrA E-mail: \pubemail}}
-\footnotetext{\textit{\(^{b}\)~\pubaddrB}}
+\footnotetext{\textit{\(^{a}\)~\pubaddrA{} E-mail: \pubemail{}}}
+\footnotetext{\textit{\(^{b}\)~\pubaddrB{}}}
 
 %Please use \dag to cite the ESI in the main text of the article.
 \footnotetext{%

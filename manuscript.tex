@@ -2,10 +2,10 @@
 
 % Documentclass
 
-\def\style{0}
+\def\style{2}
 
 \if\style0    % Own publication template
-\documentclass[9pt, twocolumn]{ownarticle}
+\documentclass[9pt, twocolumn]{setting/own/ownarticle}
 \fi\if\style1 % Elsevier publications
 \documentclass[12pt, preprint]{elsarticle}
 \fi\if\style2 % RSC publications
@@ -22,13 +22,13 @@
 
 % Preamble
 \if\style0
-\input{setting/own-preamble}
+\input{setting/own/own-preamble}
 \fi\if\style1
-\input{setting/els-preamble}
+\input{setting/els/els-preamble}
 \fi\if\style2
-\input{setting/rsc-preamble}
+\input{setting/rsc/rsc-preamble}
 \fi\if\style3
-\input{setting/acs-preamble}
+\input{setting/acs/acs-preamble}
 \fi
 
 % Graphics
@@ -43,13 +43,13 @@
 
 % Doc input
 \if\style0
-\input{setting/own-doc}
+\input{setting/own/own-doc}
 \fi\if\style1
-\input{setting/els-doc}
+\input{setting/els/els-doc}
 \fi\if\style2
-\input{setting/rsc-doc}
+\input{setting/rsc/rsc-doc}
 \fi\if\style3
-\input{setting/acs-doc}
+\input{setting/acs/acs-doc}
 \fi
 
 \input{docs/introduction}
@@ -59,7 +59,7 @@
 
 % Doc end input
 \if\style3
-\input{setting/acs-doc-end}
+\input{setting/acs/acs-doc-end}
 \else
 \section*{Acknowledgements}
 \input{docs/acknowledgements}
