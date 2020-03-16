@@ -132,10 +132,10 @@
     
 %% Use ownbib.bst if available else fall back to unsrtnat
 \setlength{\bibsep}{0.0pt}
-\IfFileExists{refs/ownbib.bst}{
-  \bibliographystyle{refs/ownbib}
+\IfFileExists{setting/own/ownbib.bst}{
+  \bibliographystyle{setting/own/ownbib}
 }{
-    \PackageWarning{ownbib}{refs/ownbib.bst not found; must specify manually}
+    \PackageWarning{ownbib}{setting/own/ownbib.bst not found; must specify manually}
 }
 \renewcommand\bibfont{\normalfont\sffamily\fontsize{6}{8}\selectfont} % set font to be sans serif
 
