@@ -19,9 +19,6 @@
 \fancypagestyle{plain}{
 
 %%%HEADER%%%
-\fancyhead[C]{\includegraphics[width=18.5cm]{setting/rsc/head_foot/header_bar}}
-\fancyhead[L]{\hspace{0cm}\vspace{1.5cm}\includegraphics[height=30pt]{setting/rsc/head_foot/journal_name}}
-\fancyhead[R]{\hspace{0cm}\vspace{1.7cm}\includegraphics[height=55pt]{setting/rsc/head_foot/RSC_LOGO_CMYK}}
 \renewcommand{\headrulewidth}{0pt}
 }
 %%%END OF HEADER%%%
@@ -41,7 +38,7 @@
 \setcounter{secnumdepth}{5}
 
 \makeatletter 
-\renewcommand\@biblabel[1]{#1}            
+\renewcommand\@biblabel[1]{#1}
 \renewcommand\@makefntext[1]% 
 {\noindent\makebox[0pt][r]{\@thefnmark\,}#1}
 \makeatother
@@ -92,7 +89,11 @@
 %%%TITLE, AUTHORS AND ABSTRACT%%%
 \twocolumn[
   \begin{@twocolumnfalse}
-  \vspace{3cm}
+  {
+    \includegraphics[height=30pt]{setting/rsc/head_foot/journal_name}\hfill\raisebox{0pt}[0pt][0pt]{
+      \includegraphics[height=55pt]{setting/rsc/head_foot/RSC_LOGO_CMYK}}\\[1ex]
+      \includegraphics[width=18.5cm]{setting/rsc/head_foot/header_bar}}\par
+  \vspace{1em}
   \sffamily
     \begin{tabular}{m{4.5cm} p{13.5cm} }
 %
@@ -162,6 +163,6 @@
 %% ------------------
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\bibliographystyle{refs/rsc}
+\bibliographystyle{setting/rsc/rsc}
 
 % End RSC Setup
