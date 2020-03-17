@@ -1,9 +1,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ownarticle.cls, v3.0
+% ownarticle.cls, v3.1
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ownarticle}[17/03/2020, v3.0]
+\ProvidesClass{ownarticle}[17/03/2020, v3.1]
 \AtEndOfClass{\RequirePackage{microtype}}
 
 % Option for SI
@@ -17,6 +17,10 @@
 % Option for affiliation
 \newif\if@switchaffil \@switchaffilfalse
 \DeclareOption{affiltop}{\@switchaffiltrue}
+
+% Option for toc image
+\newif\if@switchtoc \@switchtocfalse
+\DeclareOption{toc}{\@switchtoctrue}
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{extarticle}}
 \ProcessOptions*\relax
@@ -393,13 +397,23 @@ THE ABSTRACT\vskip12pt}\let\go\relax\fi
   \noindent
   {%
     \vskip3pt%
-    \begin{minipage}{0.6\linewidth}
-      \absfont \theabstract
-    \end{minipage}
-    \begin{minipage}{0.4\linewidth}
-      \centering
-      \includegraphics[width=0.9\linewidth]{example-image}
-    \end{minipage}
+    \if@switchtoc
+      \begin{minipage}{0.6\linewidth}
+        \absfont \theabstract
+      \end{minipage}
+      \begin{minipage}{0.4\linewidth}
+        \centering
+        \IfFileExists{figs/toc}{
+          \includegraphics[width=0.9\linewidth]{figs/toc}
+        }{
+          \includegraphics[width=0.9\linewidth]{example-image}
+        }
+      \end{minipage}
+    \else
+      \begin{minipage}{\linewidth}
+        \absfont \theabstract
+      \end{minipage}
+    \fi
   }%
   \vskip10pt%
   \noindent
