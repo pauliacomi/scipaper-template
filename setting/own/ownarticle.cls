@@ -139,8 +139,11 @@
 \IfFileExists{setting/own/ownbib.bst}{
   \bibliographystyle{setting/own/ownbib}
 }{
+  \IfFileExists{ownbib.bst}{
+  \bibliographystyle{ownbib}
+}{
     \PackageWarning{ownbib}{setting/own/ownbib.bst not found; must specify manually}
-}
+}}
 \renewcommand\bibfont{\normalfont\sffamily\fontsize{6}{8}\selectfont} % set font to be sans serif
 
 \renewcommand\@biblabel[1]{ #1.} % Remove brackets from label
