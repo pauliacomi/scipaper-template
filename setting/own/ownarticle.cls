@@ -403,11 +403,13 @@ THE ABSTRACT\vskip12pt}\let\go\relax\fi
       \end{minipage}
       \begin{minipage}{0.4\linewidth}
         \centering
-        \IfFileExists{figs/toc}{
-          \includegraphics[width=0.9\linewidth]{figs/toc}
-        }{
-          \includegraphics[width=0.9\linewidth]{example-image}
-        }
+        \IfFileExists{figs/toc.png}{% no good way of checking for extension
+        \includegraphics[width=0.9\linewidth]{figs/toc}}
+        {\IfFileExists{figs/toc.bmp}{
+        \includegraphics[width=0.9\linewidth]{figs/toc}}
+        {\IfFileExists{figs/toc.pdf}{
+        \includegraphics[width=0.9\linewidth]{figs/toc}}
+        }{\includegraphics[width=0.9\linewidth]{example-image}}}
       \end{minipage}
     \else
       \begin{minipage}{\linewidth}
