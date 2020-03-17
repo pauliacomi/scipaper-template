@@ -1,9 +1,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ownarticle.cls, v2.0
+% ownarticle.cls, v3.0
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ownarticle}[15/01/2019, v2.0]
+\ProvidesClass{ownarticle}[17/03/2020, v3.0]
 \AtEndOfClass{\RequirePackage{microtype}}
 
 % Option for SI
