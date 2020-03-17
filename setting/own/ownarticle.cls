@@ -6,13 +6,17 @@
 \ProvidesClass{ownarticle}[15/01/2019, v2.0]
 \AtEndOfClass{\RequirePackage{microtype}}
 
+% Option for SI
+\newif\if@switchSI
+\DeclareOption{SI}{\@switchSItrue}
+
 % Option for line numbers
 \newif\if@switchlineno
 \DeclareOption{lineno}{\@switchlinenotrue}
 
-% Option for SI
-\newif\if@switchSI
-\DeclareOption{SI}{\@switchSItrue}
+% Option for affiliation
+\newif\if@switchaffil \@switchaffilfalse
+\DeclareOption{affiltop}{\@switchaffiltrue}
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{extarticle}}
 \ProcessOptions*\relax
@@ -179,13 +183,15 @@
 %%%%%%%%%%%%%%%%%%%%%% General font setup
 
 %% Set up main title page fonts 
-\newcommand{\headerfont}{\normalfont\sffamily\fontsize{7}{9} \selectfont}
-\newcommand{\footerfont}{\normalfont\sffamily\fontsize{7}{9} \selectfont}
+\newcommand{\headerfont}{\normalfont\sffamily\fontsize{7pt}{9pt}\selectfont}
+\newcommand{\footerfont}{\normalfont\sffamily\fontsize{7pt}{9pt}\selectfont}
 \newcommand{\titlefont}{\fontfamily{lmss}\bfseries\fontsize{22pt}{24pt}\selectfont}
 \newcommand{\subtitlefont}{\fontfamily{lmss}\bfseries\fontsize{15pt}{20pt}\selectfont}
-\newcommand{\contactfont}{\itshape\sffamily\fontsize{7}{8}\selectfont}
-\newcommand{\absfont}{\normalfont\sffamily\bfseries\fontsize{8}{11}\selectfont}
-\newcommand{\keywordsfont}{\normalfont\rmfamily\fontsize{7}{10}\selectfont}
+\newcommand{\contactfont}{\itshape\sffamily\fontsize{7pt}{9pt}\selectfont}
+\newcommand{\absfont}{\normalfont\sffamily\bfseries\fontsize{8pt}{11pt}\selectfont}
+\newcommand{\keywordsfont}{\normalfont\sffamily\fontsize{8pt}{11pt}\selectfont}
+\newcommand{\footnotefont}{\normalfont\sffamily\fontsize{7}{9}\selectfont}
+
 
 %% Set URL link color & font
 \renewcommand\UrlFont{\color{black}\sffamily}
@@ -195,12 +201,28 @@
 
 %%%%%%%%%%%%%%%%%%%%%% Author and affiliation
 
+% Keeps footnotes where they should be
+\RequirePackage{titling}
+\setlength\thanksmarkwidth{0em}
+\setlength\thanksmargin{-\thanksmarkwidth}
+
+% Typesetting for authors/affiliations
 \RequirePackage{authblk}
 \setlength{\affilsep}{8.5pt} % 16.5pts between base of author line and base of affil line
 \renewcommand\Authfont{\color{color0}\normalfont\sffamily\bfseries\fontsize{9}{11}\selectfont}
-\renewcommand\Affilfont{\color{color0}\normalfont\sffamily\fontsize{6}{8}\selectfont}
+\renewcommand\Affilfont{\color{color0}\footnotefont}
 \renewcommand\AB@affilsepx{\newline\protect\Affilfont}
 \renewcommand\Authands{, and }
+
+%%%%%%%%%%%%%%%%%%%%%% Footnotes
+
+\RequirePackage[flushmargin,ragged,symbol*]{footmisc}
+\renewcommand*{\footnotelayout}{\footnotefont}
+\renewcommand{\footnoterule}{% Set the footnote hrule style
+  \kern -3pt
+  {\color{black50} \hrule width 72pt height 0.25pt}
+  \kern 2.5pt
+}
 
 %%%%%%%%%%%%%%%%%%%%%% Graphics, tables etc
 
@@ -302,15 +324,12 @@ x}
 % Use footer routine for line numbers
 \if@switchlineno
   \ifthenelse{\boolean{singlecolumn}}{
-    % use lineno package if singlecolumn
     \RequirePackage{lineno}
-    \renewcommand\linenumberfont{\normalfont\tiny\sffamily}
-    \linenumbers
   }{% use lineno in switch mode if doublecolumn
-  \RequirePackage[switch]{lineno}
+    \RequirePackage[switch]{lineno}
+  }
   \renewcommand\linenumberfont{\normalfont\tiny\sffamily}
   \linenumbers
-  }
 \fi
 
 %%%%%%%%%%%%%%%%%%%%%% Typesetting
@@ -368,81 +387,115 @@ THE ABSTRACT\vskip12pt}\let\go\relax\fi
 
 % Define an environment with abstract content and styling
 \newcommand{\abscontent}{
-\noindent
-{%
-\parbox{\dimexpr\linewidth}{%
+  \noindent
+  {%
     \vskip3pt%
-	\absfont \theabstract
-}%
-}%
-\vskip10pt%
-\noindent
-\@ifundefined{@abstractadd}{}{%
-{%
-\parbox{\dimexpr\linewidth}{%
- \abstractaddfont \@abstractadd}%
-}%
-\vskip10pt%
-}%
-\noindent
-\@ifundefined{@keywords}{}{%
-{%
-\parbox{\dimexpr\linewidth}{%
- \keywordsfont %
- \textbf{Keywords:} \@keywords}%
-}%
-\vskip10pt%
-}%
+    \begin{minipage}{0.6\linewidth}
+      \absfont \theabstract
+    \end{minipage}
+    \begin{minipage}{0.4\linewidth}
+      \centering
+      \includegraphics[width=0.9\linewidth]{example-image}
+    \end{minipage}
+  }%
+  \vskip10pt%
+  \noindent
+  \@ifundefined{@abstractadd}{}{%
+  {%
+    \parbox{\linewidth}{%
+    \abstractaddfont \@abstractadd}%
+  }%
+  \vskip10pt%
+  }%
+  \noindent
+  \@ifundefined{@keywords}{}{%
+  {%
+    \parbox{\linewidth}{%
+    \keywordsfont %
+    \textbf{Keywords:} \@keywords}%
+  }%
+  \vskip10pt%
+  }%
 }
 
 %% Manual adjustment to line up main content with line numbers
 \newlength\vert@adjust
 \newcommand\verticaladjustment[1]{\setlength{\vert@adjust}{#1}}
 
-% %% Custom title page 
+%% Command to define an affiliation list in a footnote
+\def\authaffil{%
+  \if@switchaffil
+    \@author\par%
+    \vskip2pt
+  \else
+    \AB@authlist\par
+    \protected@xdef\@thanks{\@thanks\protect\footnotetext[\the\c@footnote]{\AB@affillist\newline}}%
+  \fi
+}
+
+%% Command to define a contact email switch
+\def\contactswitch{%
+  \contactfont\@ifundefined{@contact}{}{\textbf{\normalfont*}~E-Mail:~\@contact}\par%
+  %
+  \vskip3pt
+}
+
+%% Command to define an "equal contribution" switch
+\def\equalcontribswitch{
+  \headerfont\@ifundefined{@equalcontrib}{}{\textsuperscript{\textbf{\dag}}~These authors contributed equally}\par%
+  %
+  \vskip3pt
+}
+
+
+%%%% Custom title page
 \renewcommand{\@maketitle}{%
 \ifthenelse{\boolean{shortintro}}
-{%
-% patch command
-\patchcmd{\@author}{\raggedright}{\centering}{}{}
-%
-\topskip0pt
-\vspace*{\fill}%
-{\centering\baselineskip= 24pt\subtitlefont Supplementary Information for\par}%
-{\centering\baselineskip= 24pt\titlefont \@title\par}%
-\vskip10pt% 21pts between base of title and base of author line
-{\raggedright \@author \par}
-\vskip8pt% 16pts between base of affiliations and base of contact line 
-{\centering \headerfont \@ifundefined{@equalcontrib}{}{%
-\dag~these authors contributed equally \@equalcontrib}\par}
-{\centering \contactfont \@ifundefined{@contact}{}{* \@contact}\par}
-\vspace*{\fill}%
+{% if short intro i.e. SI
+  % patch command to center section
+  \patchcmd{\@author}{\raggedright}{\centering}{}{}
+  %
+  \topskip0pt
+  \vspace*{\fill}%
+  %
+  {\centering\baselineskip=24pt\subtitlefont Supplementary Information for\par}%
+  {\centering\baselineskip=24pt\titlefont \@title\par}%
+  %
+  \vskip10pt
+  %
+  {\centering\authaffil{}}
+  %
+  \vskip8pt
+  %
+  % equal contribution switch
+  {\centering\equalcontribswitch{}}
+  % contact switch
+  {\centering\contactswitch{}}
+  %
+  \vspace*{\fill}%
 }
-{% else
-%
-\vskip10pt%
-{\raggedright\baselineskip= 24pt\titlefont \@title\par}%
-\vskip10pt% 21pts between base of title and base of author line
-{\raggedright \@author\par}
-\vskip8pt% 16pts between base of affiliations and base of contact line 
-{\raggedright \headerfont \@ifundefined{@equalcontrib}{}{%
-\dag~these authors contributed equally \@equalcontrib}\par}
-{\raggedright \contactfont \@ifundefined{@contact}{}{* \@contact}\par}
-\vskip12pt
-{%
-\abscontent
-}%
-\noindent\makebox[\linewidth]{\rule{\linewidth}{0.4pt}}%
-\vskip15pt%
+{% else if complete paper
+  %
+  \vskip10pt%
+  %
+  {\raggedright\baselineskip=24pt\titlefont \@title\par}%
+  %
+  \vskip10pt
+  %
+  \authaffil{}
+  %
+  \vskip3pt
+  %
+  % equal contribution switch
+  \equalcontribswitch{}
+  % contact switch
+  \contactswitch{}
+  % Abstract
+  {\abscontent{}}
+  %
+  \noindent\makebox[\linewidth]{\rule{\linewidth}{0.4pt}}%
+  %
+  \vskip15pt%
 }%
 \@ifundefined{vert@adjust}{}{\vskip\vert@adjust}%
 }%
-
-%% Footnotes set up
-\RequirePackage[flushmargin,ragged,symbol*]{footmisc}
-\renewcommand*{\footnotelayout}{\normalfont\sffamily\fontsize{6}{8}\selectfont} % set the footnote font
-\renewcommand{\footnoterule}{% Set the footnote hrule style
-  \kern -3pt
-  {\color{black50} \hrule width 72pt height 0.25pt}
-  \kern 2.5pt
-}
