@@ -59,3 +59,38 @@ is a layer of abstraction around `git` and `latexdiff`. For example:
 ```
 git latexdiff master HEAD --main manuscript.tex --pdf-viewer sumatrapdf --latexmk
 ```
+
+### FAQ
+
+---
+*Q: You could have done it this way / it is not efficient / it is not standard.*
+
+A: Latex is a nightmare to code and I am not good at it.
+Let me know if you have a better solution!
+
+---
+*Q: It doesn't work!.*
+
+A: I would be surprised if it **does** work. Let me know what problems you find.
+
+---
+*Q: It erased my Nature paper!*
+
+A: Backup? Also git.
+
+---
+*Q: Why python?*
+
+A: Cross-compatible. Also, I know python.
+
+---
+*Q: Why use a custom solution and not latexpand?*
+
+A: Expanding is just one of the steps, it was easier to code from scratch.
+
+---
+*Q: Why not code **this** feature ...*
+
+A: [PRs welcome](http://makeapullrequest.com/)
+
+---
