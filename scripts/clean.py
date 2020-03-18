@@ -6,11 +6,15 @@ Usage: zip [--output_dir=<output_dir>] [<directory>]
 import docopt
 import pathlib
 import shutil
+import os
 
 
 def main(source_dir):
     if source_dir.exists():
         shutil.rmtree(source_dir)
+    zip_path = source_dir.parent / "manuscript.zip"
+    if zip_path.exists():
+        os.remove(zip_path)
 
 
 if __name__ == "__main__":
