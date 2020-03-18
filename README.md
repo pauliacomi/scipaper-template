@@ -1,6 +1,7 @@
 # Manuscript template
 
 General publication latex template, with some quality-of-life features.
+Check out the PDF [manuscript](./manuscript.pdf) and its [SI](./manuscript-SI.pdf).
 
 ### Highlights
 
