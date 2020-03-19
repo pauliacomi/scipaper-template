@@ -173,24 +173,22 @@
 %%%%%%%%%%%%%%%%%%%%%% Setup
 %%%%%%%%%%%%%%%%%%%%%% General page setup
 
-\RequirePackage[twoside,%
-                letterpaper,includeheadfoot,%
-                layoutsize={8.125in,10.875in},%
-                layouthoffset=0.1875in,%
-                layoutvoffset=0.0625in,%
-                left=38.5pt,%
-                right=43pt,%
-                top=43pt,% 10pt provided by headsep
-                bottom=32pt,%
-                headheight=0pt,% No Header
-                headsep=10pt,%
-                footskip=25pt]{geometry}
+\RequirePackage[
+  a4paper,includeheadfoot,%
+  showframe,showcrop,%
+  top=45pt,bottom=35pt,%
+  left=55pt,right=55pt,%
+  marginparsep=5pt,%
+  marginparwidth=2cm,%
+  headheight=0pt,% No Header
+  headsep=10pt,%
+  footskip=25pt]{geometry}
 
 
 %%%%%%%%%%%%%%%%%%%%%% General font setup
 
 %% Set up main title page fonts 
-\newcommand{\headerfont}{\normalfont\sffamily\fontsize{7pt}{9pt}\selectfont}
+\newcommand{\headerfont}{\fontfamily{lmss}\color{gray}\bfseries\sffamily\fontsize{16pt}{20pt}\selectfont}
 \newcommand{\footerfont}{\normalfont\sffamily\fontsize{7pt}{9pt}\selectfont}
 \newcommand{\titlefont}{\fontfamily{lmss}\bfseries\fontsize{22pt}{24pt}\selectfont}
 \newcommand{\subtitlefont}{\fontfamily{lmss}\bfseries\fontsize{15pt}{20pt}\selectfont}
@@ -198,7 +196,6 @@
 \newcommand{\absfont}{\normalfont\sffamily\bfseries\fontsize{8pt}{11pt}\selectfont}
 \newcommand{\keywordsfont}{\normalfont\sffamily\fontsize{8pt}{11pt}\selectfont}
 \newcommand{\footnotefont}{\normalfont\sffamily\fontsize{7}{9}\selectfont}
-
 
 %% Set URL link color & font
 \renewcommand\UrlFont{\color{black}\sffamily}
@@ -302,29 +299,35 @@ x}
 %% Fancyhdr styling
 \RequirePackage{fancyhdr}  % custom headers/footers
 \RequirePackage{lastpage}  % Number of pages in the document
-\pagestyle{fancy}          % Enables the custom headers/footers
+\pagestyle{fancy}          % Set pagestyle to all 
 
+% Clear everything
+\fancyhf{}
+
+% Headers
+\renewcommand{\headrulewidth}{0pt}% % No header rule
+% \fancyhead[]{} %etc
+
+% Footers
+\renewcommand{\footrulewidth}{0pt}% % No footer rule
+\fancyfoot[R]{
+  \footerfont\textit{Preprint}\hspace{7pt}|%
+  \hspace{7pt}\textbf{\today}\hspace{7pt}|%
+  \hspace{7pt}\textbf{\thepage}}
+\fancyfoot[L]{\footerfont\@ifundefined{@leadauthor}{}{\@leadauthor}\ifnum \value{authors} > 1\textit{ et al.}\fi}
+
+% Redefining plain style (for title page)
 \fancypagestyle{plain}{%
+    \fancyhf{}
     \ifthenelse{\boolean{toprule}}{%
         \renewcommand{\headrulewidth}{3pt}%
     }{}
-    \fancyfoot[R]{\footerfont \textit{Preprint} \hspace{7pt}|\hspace{7pt}\textbf{\today}\hspace{7pt}|\hspace{7pt}\textbf{\thepage\textendash\pageref{LastPage}}}
+    \fancyfoot[R]{
+      \footerfont\textit{Preprint}\hspace{7pt}|%
+      \hspace{7pt}\textbf{\today}\hspace{7pt}|%
+      \hspace{7pt}\textbf{\thepage\textendash\pageref{LastPage}}}
     \fancyfoot[L]{\footerfont\@ifundefined{@pubdoi}{}{DOI: \@pubdoi}}
 }
-
-% Headers
-\fancyhead[LE,RO]{}
-\fancyhead[LO,RE]{}
-
-% Footers
-\lfoot{}%
-\cfoot{}%
-\rfoot{}%
-\fancyfoot[R]{\footerfont \textit{Preprint}\hspace{7pt}|\hspace{7pt}\textbf{\today}\hspace{7pt}|\hspace{7pt}\textbf{\thepage}}
-\fancyfoot[L]{\footerfont\@ifundefined{@leadauthor}{}{\@leadauthor}\ifnum \value{authors} > 1\textit{ et al.}\fi}
-
-\renewcommand{\headrulewidth}{0pt}% % No header rule
-\renewcommand{\footrulewidth}{0pt}% % No footer rule
 
 %%%%%%%%%%%%%%%%%%%%%% Line numbers
 
@@ -398,11 +401,11 @@ THE ABSTRACT\vskip12pt}\let\go\relax\fi
   {%
     \vskip3pt%
     \if@switchtoc
-      \begin{minipage}{0.6\linewidth}
+      \begin{minipage}{0.59\linewidth}
         \absfont \theabstract
       \end{minipage}
-      \begin{minipage}{0.4\linewidth}
-        \centering
+      \begin{minipage}[L]{0.4\linewidth}
+        \raggedleft
         \IfFileExists{figs/toc.png}{% no good way of checking for extension
         \includegraphics[width=0.9\linewidth]{figs/toc}}
         {\IfFileExists{figs/toc.bmp}{
@@ -461,7 +464,7 @@ THE ABSTRACT\vskip12pt}\let\go\relax\fi
 
 %% Command to define an "equal contribution" switch
 \def\equalcontribswitch{
-  \headerfont\@ifundefined{@equalcontrib}{}{\textsuperscript{\textbf{\dag}}~These authors contributed equally}\par%
+  \footerfont\@ifundefined{@equalcontrib}{}{\textsuperscript{\textbf{\dag}}~These authors contributed equally}\par%
   %
   \vskip3pt
 }
