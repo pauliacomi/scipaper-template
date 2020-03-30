@@ -175,7 +175,7 @@
 
 \RequirePackage[
   a4paper,includeheadfoot,%
-  showframe,showcrop,%
+  % showframe,showcrop,%
   top=45pt,bottom=35pt,%
   left=55pt,right=55pt,%
   marginparsep=5pt,%
