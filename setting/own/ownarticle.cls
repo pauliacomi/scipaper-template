@@ -107,7 +107,7 @@
 
 % Better tables 
 \RequirePackage{
-  longtable
+  longtable,
   booktabs,
   makecell,
   array,
