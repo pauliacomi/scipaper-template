@@ -107,11 +107,12 @@
 
 % Better tables 
 \RequirePackage{
-    booktabs,
-    makecell,
-    array,
-    multirow,
-    tabularx
+  longtable
+  booktabs,
+  makecell,
+  array,
+  multirow,
+  tabularx
 }
 
 % Better captions 
