@@ -56,6 +56,14 @@
 % Microtype
 \AtEndOfClass{\RequirePackage{microtype}}
 
+% AMS maths packages
+\RequirePackage{
+  amsmath,
+  amsfonts,
+  amsthm,
+  amssymb
+  }
+
 % Encodings
 \usepackage{ifxetex,ifluatex}
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
@@ -69,14 +77,6 @@
   \fi
   \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
 \fi
-
-% AMS maths packages
-\RequirePackage{
-  amsmath,
-  amsfonts,
-  amsthm,
-  amssymb
-  }
 
 % Language
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
