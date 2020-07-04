@@ -56,7 +56,9 @@ $endif$
 
 %% Keywords
 
-\keywords{\pubkeywords{}}
+$if(keywords)$
+\keywords{$for(keywords)$$keywords$$sep$; $endfor$}
+$endif$
 
 % SI
 \externaldocument{manuscript-SI}
