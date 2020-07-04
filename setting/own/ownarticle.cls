@@ -4,7 +4,6 @@
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{ownarticle}[17/03/2020, v3.1]
-\AtEndOfClass{\RequirePackage{microtype}}
 
 % Option for SI
 \newif\if@switchSI
@@ -50,21 +49,42 @@
 
 %%%%%%%%%%%%%%%%%%%%%% Fonts and language
 
-\RequirePackage[utf8]{inputenc}
-\RequirePackage[english]{babel}
-% AMS maths packages
-\RequirePackage{
-    amsmath,
-    amsfonts,
-    amsthm,
-    amssymb
-}
+% Fonts
 \RequirePackage{lmodern}
 \RequirePackage[scaled]{helvet}
-\RequirePackage[TS1,T1]{fontenc}
 
-%% Other packages
-\RequirePackage{enumitem} % For reducing bullet list item separation
+% Microtype
+\AtEndOfClass{\RequirePackage{microtype}}
+
+% Encodings
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \RequirePackage[TS1,T1]{fontenc}
+  \RequirePackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+
+% AMS maths packages
+\RequirePackage{
+  amsmath,
+  amsfonts,
+  amsthm,
+  amssymb
+  }
+
+% Language
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \RequirePackage[english]{babel}
+\else
+  \usepackage{polyglossia}
+  \setmainlanguage[]{english}
+\fi
 
 %%%%%%%%%%%%%%%%%%%%%% Graphics packages, tables and listings
 
@@ -107,6 +127,9 @@
 
 % For code snippets
 \RequirePackage{listings}
+
+% Lists
+\RequirePackage{enumitem} % For reducing bullet list item separation
 
 % Todo notes
 \RequirePackage{todonotes}

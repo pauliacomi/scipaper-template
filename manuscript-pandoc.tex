@@ -1,0 +1,107 @@
+% Master file for pandoc output
+
+% Documentclass
+\documentclass[9pt, twocolumn, toc, lineno]{setting/own/ownarticle}
+
+% Preamble
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Title
+$if(title)$
+\title{$title$$if(thanks)$\thanks{$thanks$}$endif$}
+$endif$
+
+%% Meta-data block
+$for(author)$
+\author[$for(author.institute_indices)$%
+  $author.institute_indices$%
+  $sep$,$endfor$]{%
+  $author.name$%
+  $if(author.orcid)$
+  ~\protect\orcid{$author.orcid$}%
+  $endif$%
+  $if(author.correspondence)$$if(author.email)$%
+  \textsuperscript{*\,}%
+  %$endif$$endif$%
+  $if(author.equal_contributor)$
+  \textsuperscript{$if(equal_contributor_symbol)$$equal_contributor_symbol$$else$\textdagger$endif$\,}%
+  $endif$%
+}
+$endfor$
+
+$for(author)$
+  $if(author.correspondence)$
+\contact{$author.email$}
+  $endif$%
+$endfor$
+
+$if(has_equal_contributors)$
+\equalcontrib{}
+$endif$
+
+$for(institute)$
+\affil[$institute.index$]{$institute.name$}
+$endfor$
+
+\leadauthor{P. Iacomi}
+
+\pubdoi{10.0000/xxxxxxxxxxx}
+
+%% Abstract
+
+$if(abstract)$
+\begin{abstract}
+  $abstract$
+\end{abstract}
+$endif$
+
+%% Keywords
+
+\keywords{\pubkeywords{}}
+
+% SI
+\externaldocument{manuscript-SI}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Begin doc
+\begin{document}
+
+% Title
+\maketitle
+
+% Hyperlink text
+\renewcommand{\figureautorefname}{Fig.}
+\renewcommand{\tableautorefname}{Tab.}
+\renewcommand{\equationautorefname}{Eq.}
+
+% SI spec
+\makeatletter\if@switchSI\else
+\footnotetext{%
+Electronic Supplementary Information (ESI) available:
+one PDF file with all referenced supporting information.
+}
+\fi\makeatother
+
+$for(include-before)$
+$include-before$
+$endfor$
+
+$body$
+
+$for(include-after)$
+$include-after$
+$endfor$
+
+$if(bibliography)$
+  $if(biblio-title)$
+    $if(has-chapters)$
+\renewcommand\bibname{$biblio-title$}
+    $else$
+\renewcommand\refname{$biblio-title$}
+    $endif$
+  $endif$
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+$endif$
+
+% End doc
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
