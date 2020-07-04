@@ -62,7 +62,7 @@
   amsfonts,
   amsthm,
   amssymb
-  }
+}
 
 % Encodings
 \usepackage{ifxetex,ifluatex}
