@@ -3,7 +3,7 @@
 % Documentclass
 \documentclass[9pt, twocolumn, toc, lineno]{$documentclass$}
 
-% Limit width
+% Limit image width
 \usepackage{grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -14,10 +14,25 @@
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 
+$if(csl-refs)$
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newenvironment{cslreferences}%
+  {$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+  {\par}
+$endif$
+
 % Header includes
 $for(header-includes)$
 $header-includes$
 $endfor$
+
+% Temporary fix until tables work
+\usepackage{supertabular}
+\let\longtable\supertabular
+\let\endlongtable\endsupertabular
+\let\endhead\relax
 
 % Preamble
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

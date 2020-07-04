@@ -65,13 +65,16 @@
 }
 
 % Encodings
-\usepackage{ifxetex,ifluatex}
+\RequirePackage{ifxetex,ifluatex}
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \RequirePackage[TS1,T1]{fontenc}
   \RequirePackage[utf8]{inputenc}
 \else % if luatex or xelatex
   \ifxetex
     \usepackage{mathspec}
+    % undo the wrong changes made by mathspec
+    \let\RequirePackage\original@RequirePackage
+    \let\usepackage\RequirePackage
   \else
     \usepackage{fontspec}
   \fi
