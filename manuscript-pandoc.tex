@@ -16,16 +16,10 @@ $endif$
 
 %% Meta-data block
 $for(author)$
-\author[$for(author.institute_indices)$%
-  $author.institute_indices$%
-  $sep$,$endfor$]{%
+\author[$for(author.institute_indices)$$author.institute_indices$$sep$,$endfor$]{%
   $author.name$%
-  $if(author.orcid)$
-  ~\protect\orcid{$author.orcid$}%
-  $endif$%
-  $if(author.correspondence)$$if(author.email)$%
-  \textsuperscript{*\,}%
-  %$endif$$endif$%
+  $if(author.orcid)$~\protect\orcid{$author.orcid$}$endif$%
+  $if(author.correspondence)$$if(author.email)$\textsuperscript{*\,}$endif$$endif$%
   $if(author.equal_contributor)$
   \textsuperscript{$if(equal_contributor_symbol)$$equal_contributor_symbol$$else$\textdagger$endif$\,}%
   $endif$%
