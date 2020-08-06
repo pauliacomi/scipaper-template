@@ -266,13 +266,15 @@
 \definecolor{color0}{RGB}{0,0,0} % Base
 \definecolor{color1}{RGB}{59,90,198} % author email, doi
 
-%% Figure caption style
+%% Figure style
+\setlength{\textfloatsep}{6pt plus 2.0pt minus 2.0pt}
+\setlength{\floatsep}{8pt plus 2.0pt minus 2.0pt}
 \DeclareCaptionFormat{fmt}{\normalfont\sffamily\fontsize{7}{9}\selectfont#1#2#3}
 \captionsetup*{format=fmt}
 
 %% Table style
 \RequirePackage{etoolbox}
-\captionsetup*[table]{labelfont+={small},textfont+={small,sf,bf},skip=10pt,position=above}
+\captionsetup*[table]{format=fmt,position=above}
 % booktabs provide nice spacing, but rule widths and distances need fixing
 \setlength{\heavyrulewidth}{0.5pt}
 \setlength{\lightrulewidth}{0.5pt}
