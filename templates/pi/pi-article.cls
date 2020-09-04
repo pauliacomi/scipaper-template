@@ -172,13 +172,13 @@
     
 %% Use pi-bib.bst if available else fall back to unsrtnat
 \setlength{\bibsep}{0.0pt}
-\IfFileExists{setting/pi/pi-bib.bst}{
-  \bibliographystyle{setting/pi/pi-bib}
+\IfFileExists{templates/pi/pi-bib.bst}{
+  \bibliographystyle{templates/pi/pi-bib}
 }{
   \IfFileExists{pi-bib.bst}{
   \bibliographystyle{pi-bib}
 }{
-    \PackageWarning{pi-bib}{setting/pi/pi-bib.bst not found; must specify manually}
+    \PackageWarning{pi-bib}{templates/pi/pi-bib.bst not found; must specify manually}
 }}
 \renewcommand\bibfont{\normalfont\sffamily\fontsize{6}{8}\selectfont} % set font to be sans serif
 

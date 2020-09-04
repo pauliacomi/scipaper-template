@@ -28,7 +28,7 @@ Check out the PDF [manuscript](./manuscript.pdf) and its [SI](./manuscript-SI.pd
   In the main file, the `\style{}` command can be changed to
   change template.
 
-* A single place for all metadata `./setting/metadata`.
+* A single place for all metadata `./templates/metadata`.
   Once declared here, the created commands can be used to customize
   individual templates.
 

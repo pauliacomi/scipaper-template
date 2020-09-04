@@ -4,7 +4,7 @@
 \def\style{0}
 
 \if\style0    % My own publication template
-    \documentclass[9pt, twocolumn, toc, lineno]{setting/pi/pi-article}
+    \documentclass[9pt, twocolumn, toc, lineno]{templates/pi/pi-article}
 \fi\if\style1 % Elsevier publications
     \documentclass[12pt, preprint]{elsarticle}
 \fi\if\style2 % RSC publications
@@ -14,17 +14,17 @@
 \fi
 
 % Metadata
-\input{setting/metadata}
+\input{templates/metadata}
 
 % Preamble
 \if\style0
-    \input{setting/pi/pi-preamble}
+    \input{templates/pi/pi-preamble}
 \fi\if\style1
-    \input{setting/els/els-preamble}
+    \input{templates/els/els-preamble}
 \fi\if\style2
-    \input{setting/rsc/rsc-preamble}
+    \input{templates/rsc/rsc-preamble}
 \fi\if\style3
-    \input{setting/acs/acs-preamble}
+    \input{templates/acs/acs-preamble}
 \fi
 
 % Graphics
@@ -39,20 +39,20 @@
 
 % Doc input
 \if\style0
-    \input{setting/pi/pi-doc}
+    \input{templates/pi/pi-doc}
 \fi\if\style1
-    \input{setting/els/els-doc}
+    \input{templates/els/els-doc}
 \fi\if\style2
-    \input{setting/rsc/rsc-doc}
+    \input{templates/rsc/rsc-doc}
 \fi\if\style3
-    \input{setting/acs/acs-doc}
+    \input{templates/acs/acs-doc}
 \fi
 
 \input{docs/.content}
 
 % Doc end input
 \if\style3
-    \input{setting/acs/acs-doc-end}
+    \input{templates/acs/acs-doc-end}
 \else
 \section*{Acknowledgements}
     \input{docs/x-acknowledgements}

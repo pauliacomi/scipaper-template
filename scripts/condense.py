@@ -91,9 +91,9 @@ def clean(text, style):
     text = re.sub(r"(?<=\\bibliography{)refs/biblio(?=})", r'biblio', text)
 
     if style == '0' or style is None:
-        text = re.sub(r"setting/pi/", r'', text)
+        text = re.sub(r"templates/pi/", r'', text)
     elif style == '2':
-        text = re.sub(r"setting/rsc/", r'', text)
+        text = re.sub(r"templates/rsc/", r'', text)
 
     return text
 
@@ -129,14 +129,14 @@ def copy_files(source, target, style):
     shutil.copytree((source / 'figs'), (target / 'figs'),
                     ignore=shutil.ignore_patterns('*.md', '*.txt'))
     if style == '0':
-        shutil.copy((source / 'setting' / 'pi' / 'pi-article.cls'),
+        shutil.copy((source / 'templates' / 'pi' / 'pi-article.cls'),
                     (target / 'pi-article.cls'))
-        shutil.copy((source / 'setting' / 'pi' / 'pi-bib.bst'),
+        shutil.copy((source / 'templates' / 'pi' / 'pi-bib.bst'),
                     (target / 'pi-bib.bst'))
     elif style == '2':
-        shutil.copy((source / 'setting' / 'rsc' / 'rsc.bst'),
+        shutil.copy((source / 'templates' / 'rsc' / 'rsc.bst'),
                     (target / 'rsc.bst'))
-        shutil.copytree((source / 'setting' / 'rsc' / 'head_foot'),
+        shutil.copytree((source / 'templates' / 'rsc' / 'head_foot'),
                         (target / 'head_foot'))
 
 
