@@ -1,3 +1,9 @@
 [submodule "templates/pi"]
 	path = templates/pi
 	url = https://github.com/pauliacomi/latex-paper-class
+[submodule "scripts/pandoc-scholar"]
+	path = scripts/pandoc-scholar
+	url = https://github.com/pauliacomi/pandoc-scholar
+[submodule "templates/pandoc"]
+	path = templates/pandoc
+	url = https://github.com/pauliacomi/pandoc-templates
