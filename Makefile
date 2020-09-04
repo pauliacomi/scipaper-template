@@ -21,6 +21,8 @@ PANDOC_LATEX_OPTIONS   += --filter=pandoc-citeproc
 PANDOC_HTML_OPTIONS     = --toc
 PANDOC_EPUB_OPTIONS     = --toc
 
+PANDOC_DOCX_OPTIONS	   := --lua-filter=./scripts/pd-chem-filter.lua $(PANDOC_WRITER_OPTIONS)
+
 DEFAULT_EXTENSIONS    ?= html doc tex pdf
 
 include $(PANDOC_SCHOLAR_PATH)/Makefile
@@ -30,6 +32,7 @@ tex2md:
 	--from latex \
 	--to markdown+smart+grid_tables \
 	--lua-filter=./scripts/pd-image-filter.lua \
+	--lua-filter=./scripts/pd-chem-filter.lua \
 	-H manuscript-pd-head.yaml --verbose --columns=100
 
 # Must be prepended to the options, as has to come before citeproc
