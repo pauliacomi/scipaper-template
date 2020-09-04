@@ -15,8 +15,8 @@
 
 % Fixes for Pandoc conversion
 %
-% Chemical equations become plain math
-\renewcommand{\ce}[1]{\(#1\)}
+% Chemical equations are surrounded by math
+\renewcommand{\ce}[1]{\(\\ce{#1}\)}
 
 % SIrange becomes SIRange (TODO remove next pandoc version)
 \renewcommand{\SIrange}[3]{\SIRange{#1}{#2}{#3}}
