@@ -42,9 +42,9 @@ referenced. We can add citations as well [@example]. Units are inserted with the
 We can have some standard data 40 kJ/mol or ranges such as 20 Å--30 Å. Finally simple unit
 typesetting is also possible  MHz/kPa.
 
-Chemistry is included by referring to the `mhchem` package. Simple molecules like $N2$ and $C2H4$
-should be easy to include. More complex formula typesetting is possible too: $^{13}C$ NMR,
-$CaCl2 * 12H2O$ and $Fe^{II}Fe^{III}2O4$.
+Chemistry is included by referring to the `mhchem` package. Simple molecules like $\ce{N2}$ and
+$\ce{C2H4}$ should be easy to include. More complex formula typesetting is possible too:
+$\ce{^{13}C}$ NMR, $\ce{CaCl2 * 12H2O}$ and $\ce{Fe^{II}Fe^{III}2O4}$.
 
 Equations are in a standard Latex `equation` environment.
 
@@ -67,9 +67,10 @@ Materials and methods
 Results and discussion
 ======================
 
-![ Example small figure and its caption. ](example-image){#fig:caption-1 width="0.9\\linewidth"}
+![ Example small figure and its caption. ](figs/example-image.png){#fig:caption-1
+width="0.9\\linewidth"}
 
-![image](example-image){width="0.9\\linewidth"}
+![image](figs/example-image.png){width="0.9\\linewidth"}
 
 Conclusions
 ===========
@@ -85,7 +86,7 @@ SI section 1
 
 [@example]
 
-![ Example caption. ](example-image){#fig:caption-si width="0.9\\linewidth"}
+![ Example caption. ](figs/example-image.png){#fig:caption-si width="0.9\\linewidth"}
 
 SI section 2
 ============

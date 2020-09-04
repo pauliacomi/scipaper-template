@@ -10,7 +10,7 @@ CLASS_FILE_LATEX        = templates/pi/pi-article
 PANDOC_SCHOLAR_PATH     = scripts/pandoc-scholar
 
 PANDOC_READER_OPTIONS   = --data-dir=templates
-# PANDOC_READER_OPTIONS  += --defaults=base
+PANDOC_READER_OPTIONS  += --defaults=templates/pandoc/defaults/base
 
 PANDOC_LATEX_OPTIONS    = --pdf-engine=xelatex
 PANDOC_LATEX_OPTIONS   += --variable=documentclass:$(CLASS_FILE_LATEX)
@@ -31,6 +31,7 @@ tex2md:
 	pandoc -s $(TEX_FILE) -o $(ARTICLE_FILE) \
 	--from latex \
 	--to markdown+smart+grid_tables \
+	--default-image-extension=".png" \
 	--lua-filter=./scripts/pd-image-filter.lua \
 	--lua-filter=./scripts/pd-chem-filter.lua \
 	-H manuscript-pd-head.yaml --verbose --columns=100
