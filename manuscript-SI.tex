@@ -1,18 +1,15 @@
 % Master SI file
 
 % Documentclass
-\documentclass[11pt, SI]{setting/own/ownarticle}
+\documentclass[11pt, SI]{setting/pi/pi-article}
 
 \graphicspath{ {figs/} }
 
 % Metadata
 \input{setting/metadata}
 
-% Filling text
-\usepackage{lipsum}
-
 % Preamble
-\input{setting/own/own-preamble}
+\input{setting/pi/pi-preamble}
 
 % Graphics
 \graphicspath{ {figs/} }
@@ -22,13 +19,15 @@
 \begin{document}
 
 % Doc input
-\input{setting/own/own-doc}
+\input{setting/pi/pi-doc}
 
 \pagebreak
 \tableofcontents
-\pagebreak
-\input{docs/SI/si-example}
 
+\pagebreak
+\input{docs/SI/.si-content}
+
+\pagebreak
 \bibliography{refs/biblio}
 
 % End doc

@@ -1,1 +1,0 @@
-Manuscript parts go here

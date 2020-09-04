@@ -1,9 +1,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ownarticle.cls, v3.1
+% pi-article.cls, v3.2
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ownarticle}[17/03/2020, v3.1]
+\ProvidesClass{pi-article}[03/09/2020, v3.1]
 
 % Option for SI
 \newif\if@switchSI
@@ -135,6 +135,11 @@
 % Lists
 \RequirePackage{enumitem} % For reducing bullet list item separation
 
+%%%%%%%%%%%%%%%%%%%%%% Utilities
+
+% Filler text
+\RequirePackage{lipsum}
+
 % Todo notes
 \RequirePackage{todonotes}
 
@@ -165,15 +170,15 @@
 \RequirePackage{natmove}
 \renewcommand*{\natmovechars}{.}
     
-%% Use ownbib.bst if available else fall back to unsrtnat
+%% Use pi-bib.bst if available else fall back to unsrtnat
 \setlength{\bibsep}{0.0pt}
-\IfFileExists{setting/own/ownbib.bst}{
-  \bibliographystyle{setting/own/ownbib}
+\IfFileExists{setting/pi/pi-bib.bst}{
+  \bibliographystyle{setting/pi/pi-bib}
 }{
-  \IfFileExists{ownbib.bst}{
-  \bibliographystyle{ownbib}
+  \IfFileExists{pi-bib.bst}{
+  \bibliographystyle{pi-bib}
 }{
-    \PackageWarning{ownbib}{setting/own/ownbib.bst not found; must specify manually}
+    \PackageWarning{pi-bib}{setting/pi/pi-bib.bst not found; must specify manually}
 }}
 \renewcommand\bibfont{\normalfont\sffamily\fontsize{6}{8}\selectfont} % set font to be sans serif
 
@@ -194,7 +199,15 @@
   pagebackref=false
 ]{hyperref}
 
-\RequirePackage{doi}
+%% References
+\RequirePackage[
+  capitalise,
+  nameinlink,
+]{cleveref}
+\creflabelformat{equation}{#2\textup{#1}#3}
+
+\RequirePackage{doi} % DOIs
+\RequirePackage[nottoc,numbib]{tocbibind} % References in TOC (for SI)
 
 %%%%%%%%%%%%%%%%%%%%%% 
 %%%%%%%%%%%%%%%%%%%%%% Setup
@@ -270,7 +283,7 @@
 \setlength{\textfloatsep}{6pt plus 2.0pt minus 2.0pt}
 \setlength{\floatsep}{8pt plus 2.0pt minus 2.0pt}
 \DeclareCaptionFormat{fmt}{\normalfont\sffamily\fontsize{7}{9}\selectfont#1#2#3}
-\captionsetup*{format=fmt}
+\captionsetup*{format=fmt, skip=3pt}
 
 %% Table style
 \RequirePackage{etoolbox}
@@ -281,8 +294,8 @@
 \setlength{\aboverulesep}{1.5pt}
 \setlength{\belowrulesep}{1.5pt}
 \setlength{\belowbottomsep}{10pt}
-\AtBeginEnvironment{tabular}{
-\sffamily\fontsize{7.5}{10}\selectfont
+\AtBeginEnvironment{tabular}{%
+  \sffamily\fontsize{7.5}{10}\selectfont
 }
 \newcommand{\addtabletext}[1]{{\setlength{\leftskip}{9pt}\fontsize{7}{9}\selectfont#1}}
 
@@ -414,14 +427,17 @@ x}
 
 %% Abstract formatting
 \def\xabstract{abstract}
-\long\def\abstract#1\end#2{\def\two{#2}\ifx\two\xabstract 
-\long\gdef\theabstract{\ignorespaces#1}
-\def\go{\end{abstract}}\else
-\typeout{^^J^^J PLEASE DO NOT USE ANY \string\begin\space \string\end^^J
-COMMANDS WITHIN ABSTRACT^^J^^J}#1\end{#2}
-\gdef\theabstract{\vskip12pt BADLY FORMED ABSTRACT: PLEASE DO
-NOT USE {\tt\string\begin...\string\end} COMMANDS WITHIN
-THE ABSTRACT\vskip12pt}\let\go\relax\fi
+\long\def\abstract#1\end#2{
+  \def\two{#2}
+  \ifx\two\xabstract
+    \long\gdef\theabstract{\ignorespaces#1}
+    \def\go{\end{abstract}}
+  \else
+    \typeout{^^J^^J PLEASE DO NOT USE ANY \string\begin\space \string\end^^J COMMANDS WITHIN ABSTRACT^^J^^J}#1\end{#2}
+    \gdef\theabstract{%
+      \vskip12pt BADLY FORMED ABSTRACT: PLEASE DO NOT USE {\tt\string\begin...\string\end} COMMANDS WITHIN THE ABSTRACT\vskip12pt%
+    }\let\go\relax
+  \fi
 \go}
 
 % Define an environment with abstract content and styling

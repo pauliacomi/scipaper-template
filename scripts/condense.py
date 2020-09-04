@@ -8,18 +8,18 @@ import pathlib
 import shutil
 import re
 
-STYLE_RE = re.compile(r"\\def\\style{\d}\s")        # style statement + newline
-INPUT_RE = re.compile(r"\\input{.*}")               # an input statement
-ARGUMENT_RE = re.compile(r"(?<={)[\s\S]*(?=})")     # any latex argument
-IF_RE = re.compile(r"\\if[\s\S]*?\\fi")             # any if/fi section
-ELSE_RE = re.compile(r"\\else[\s\S]*?\\fi")         # any else/fi section
-IF_ARG_RE = re.compile(r"(?<=\\if\\style)\d")       # the style if comparator
-IF_ARG_STRIP = re.compile(r"\\if\\\w*\s*|\\fi")     # the if/fi edges
-ELSE_ARG_STRIP = re.compile(r"\\else|\\fi")         # the else/fi edges
-META_RE = re.compile(r"% !TEX .*")                  # tex meta commands
+STYLE_RE = re.compile(r"\\def\\style{\d}\s")  # style statement + newline
+INPUT_RE = re.compile(r"\\input{.*}")  # an input statement
+ARGUMENT_RE = re.compile(r"(?<={)[\s\S]*(?=})")  # any latex argument
+IF_RE = re.compile(r"\\if[\s\S]*?\\fi")  # any if/fi section
+ELSE_RE = re.compile(r"\\else[\s\S]*?\\fi")  # any else/fi section
+IF_ARG_RE = re.compile(r"(?<=\\if\\style)\d")  # the style if comparator
+IF_ARG_STRIP = re.compile(r"\\if\\\w*\s*|\\fi")  # the if/fi edges
+ELSE_ARG_STRIP = re.compile(r"\\else|\\fi")  # the else/fi edges
+META_RE = re.compile(r"% !TEX .*")  # tex meta commands
 
 style_d = {
-    '0': 'own',
+    '0': 'pi',
     '1': 'els',
     '2': 'rsc',
     '3': 'acs',
@@ -66,7 +66,6 @@ def sort_ifs(text, style):
 
 
 def expand(text):
-
     def repl_input(inp_section):
 
         input_text = inp_section.group()
@@ -92,7 +91,7 @@ def clean(text, style):
     text = re.sub(r"(?<=\\bibliography{)refs/biblio(?=})", r'biblio', text)
 
     if style == '0' or style is None:
-        text = re.sub(r"setting/own/", r'', text)
+        text = re.sub(r"setting/pi/", r'', text)
     elif style == '2':
         text = re.sub(r"setting/rsc/", r'', text)
 
@@ -124,35 +123,21 @@ def process_tex(target):
 
 
 def copy_files(source, target, style):
-    shutil.copy(
-        (source / 'refs' / 'biblio.bib'),
-        (target / 'biblio.bib'))
-    shutil.copy(
-        (source / 'manuscript-SI.aux'),
-        (target / 'manuscript-SI.aux'))
-    shutil.copy(
-        (source / 'manuscript-SI.pdf'),
-        (target / 'manuscript-SI.pdf'))
-    shutil.copytree(
-        (source / 'figs'),
-        (target / 'figs'),
-        ignore=shutil.ignore_patterns('*.md', '*.txt')
-    )
+    shutil.copy((source / 'refs' / 'biblio.bib'), (target / 'biblio.bib'))
+    shutil.copy((source / 'manuscript-SI.aux'), (target / 'manuscript-SI.aux'))
+    shutil.copy((source / 'manuscript-SI.pdf'), (target / 'manuscript-SI.pdf'))
+    shutil.copytree((source / 'figs'), (target / 'figs'),
+                    ignore=shutil.ignore_patterns('*.md', '*.txt'))
     if style == '0':
-        shutil.copy(
-            (source / 'setting' / 'own' / 'ownarticle.cls'),
-            (target / 'ownarticle.cls'))
-        shutil.copy(
-            (source / 'setting' / 'own' / 'ownbib.bst'),
-            (target / 'ownbib.bst'))
+        shutil.copy((source / 'setting' / 'pi' / 'pi-article.cls'),
+                    (target / 'pi-article.cls'))
+        shutil.copy((source / 'setting' / 'pi' / 'pi-bib.bst'),
+                    (target / 'pi-bib.bst'))
     elif style == '2':
-        shutil.copy(
-            (source / 'setting' / 'rsc' / 'rsc.bst'),
-            (target / 'rsc.bst'))
-        shutil.copytree(
-            (source / 'setting' / 'rsc' / 'head_foot'),
-            (target / 'head_foot')
-        )
+        shutil.copy((source / 'setting' / 'rsc' / 'rsc.bst'),
+                    (target / 'rsc.bst'))
+        shutil.copytree((source / 'setting' / 'rsc' / 'head_foot'),
+                        (target / 'head_foot'))
 
 
 def main(source_dir, output_dir='./processed/'):
@@ -188,7 +173,7 @@ def main(source_dir, output_dir='./processed/'):
 
 if __name__ == "__main__":
     arguments = docopt.docopt(__doc__)
-    directory = arguments["<directory>"] or pathlib.Path(
-        __file__).parent.parent
+    directory = arguments["<directory>"
+                          ] or pathlib.Path(__file__).parent.parent
     # output_dir = arguments["--output_dir"] or None
     main(directory)

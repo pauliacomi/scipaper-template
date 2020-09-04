@@ -73,7 +73,7 @@
 \sisetup{detect-weight=true, detect-family=true}
 
 % Chemical formulas
-\usepackage{mhchem}             % Formula subscripts using \ce{}
+\usepackage[version=4]{mhchem}             % Formula subscripts using \ce{}
 
 %%%%%%%%%%%%%%%%%%%%%% Bibliography packages and settings
 
@@ -108,9 +108,19 @@
 \usepackage{hyperref}
 \hypersetup{colorlinks=false,pdfborder=0 0 0}
 
+%% References
+\usepackage[
+    capitalise,
+    nameinlink,
+  ]{cleveref}
+\creflabelformat{equation}{#2\textup{#1}#3}
+
 %%%%%%%%%%%%%%%%%%%%%% Other
 
 %% The lineno packages adds line numbers. Start line numbering with
 %% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
 %% for the whole article with \linenumbers after \end{frontmatter}.
 \usepackage{lineno}
+
+% lipsum
+\usepackage{lipsum}

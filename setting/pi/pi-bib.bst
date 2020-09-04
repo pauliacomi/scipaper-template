@@ -1,5 +1,5 @@
 %%
-%% This is file `ownbib.bst',
+%% This is file `pi-bib.bst',
 %% generated with the docstrip utility.
 %%
 %% The original source files were:
@@ -1632,4 +1632,4 @@ FUNCTION {end.bib}
 EXECUTE {end.bib}
 %% End of customized bst file
 %%
-%% End of file `ownbib.bst'.
+%% End of file `pi-bib.bst'.

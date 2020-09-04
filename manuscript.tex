@@ -3,31 +3,28 @@
 % Documentclass
 \def\style{0}
 
-\if\style0    % Own publication template
-\documentclass[9pt, twocolumn, toc, lineno]{setting/own/ownarticle}
+\if\style0    % My own publication template
+    \documentclass[9pt, twocolumn, toc, lineno]{setting/pi/pi-article}
 \fi\if\style1 % Elsevier publications
-\documentclass[12pt, preprint]{elsarticle}
+    \documentclass[12pt, preprint]{elsarticle}
 \fi\if\style2 % RSC publications
-\documentclass[9pt, twoside, twocolumn]{article}
+    \documentclass[9pt, twoside, twocolumn]{article}
 \fi\if\style3 % ACS publications
-\documentclass[journal=cmatex,manuscript=article]{achemso}
+    \documentclass[journal=cmatex,manuscript=article]{achemso}
 \fi
 
 % Metadata
 \input{setting/metadata}
 
-% Filling text
-\usepackage{lipsum}
-
 % Preamble
 \if\style0
-\input{setting/own/own-preamble}
+    \input{setting/pi/pi-preamble}
 \fi\if\style1
-\input{setting/els/els-preamble}
+    \input{setting/els/els-preamble}
 \fi\if\style2
-\input{setting/rsc/rsc-preamble}
+    \input{setting/rsc/rsc-preamble}
 \fi\if\style3
-\input{setting/acs/acs-preamble}
+    \input{setting/acs/acs-preamble}
 \fi
 
 % Graphics
@@ -42,28 +39,25 @@
 
 % Doc input
 \if\style0
-\input{setting/own/own-doc}
+    \input{setting/pi/pi-doc}
 \fi\if\style1
-\input{setting/els/els-doc}
+    \input{setting/els/els-doc}
 \fi\if\style2
-\input{setting/rsc/rsc-doc}
+    \input{setting/rsc/rsc-doc}
 \fi\if\style3
-\input{setting/acs/acs-doc}
+    \input{setting/acs/acs-doc}
 \fi
 
-\input{docs/introduction}
-\input{docs/materialsmethod}
-\input{docs/resultsdiscussion}
-\input{docs/conclusions}
+\input{docs/.content}
 
 % Doc end input
 \if\style3
-\input{setting/acs/acs-doc-end}
+    \input{setting/acs/acs-doc-end}
 \else
 \section*{Acknowledgements}
-\input{docs/acknowledgements}
+    \input{docs/x-acknowledgements}
 \section*{Author contributions}
-\input{docs/contributions}
+    \input{docs/y-contributions}
 \fi
 
 \bibliography{refs/biblio}

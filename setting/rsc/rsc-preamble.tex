@@ -51,8 +51,6 @@
 
 \definecolor{cream}{RGB}{222,217,201}
 
-%%%%%%%%%%%%%%%%%%%%%% OWN
-
 %%%%%%%%%%%%%%%%%%%%%% Fonts and language
 
 % UNICODE recognition:
@@ -144,3 +142,15 @@
     % linktocpage=false,                      %% pagenumber link in TOC
     % pdfborder={0 0 0}                       %% pdf border settings
 % }
+
+% Additional Setup
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{lipsum}
+
+%% References
+\usepackage[
+  capitalise,
+  nameinlink,
+]{cleveref}
+\creflabelformat{equation}{#2\textup{#1}#3}

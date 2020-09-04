@@ -1,0 +1,67 @@
+% Alt master file to be processed with Pandoc
+
+% Documentclass
+\documentclass[9pt, twocolumn, lineno]{setting/pi/pi-article}
+
+% Metadata
+\input{setting/metadata}
+
+% Preamble
+\input{setting/pi/pi-preamble}
+
+% Graphics
+\graphicspath{ {figs/} }
+\DeclareGraphicsExtensions{.png}
+
+% Fixes for Pandoc conversion
+%
+% Chemical equations become plain math
+\renewcommand{\ce}[1]{\(#1\)}
+
+% SIrange becomes SIRange (TODO remove next pandoc version)
+\renewcommand{\SIrange}[3]{\SIRange{#1}{#2}{#3}}
+
+% si{} becomes blank SI{}{} (TODO remove next pandoc version)
+\renewcommand{\si}[1]{\SI{}{#1}}
+
+% copyright added
+\renewcommand{\textcopyright}[0]{©}
+
+% angstrom added
+\renewcommand{\angstrom}[0]{Å}
+
+% using cleveref as it is picked up by pandoc
+\renewcommand{\autoref}[1]{\cref{#1}}
+
+% making the figure* environment a regular figure environment
+\newenvironment{figure2col}{\begin{figure}}{\end{figure}}
+
+% SI
+\externaldocument{manuscript-SI}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+% Doc input
+\input{setting/pi/pi-doc}
+
+% Content
+\input{docs/.content.tex}
+
+% Doc end input
+\section*{Acknowledgements}
+\input{docs/x-acknowledgements}
+
+\section*{Author contributions}
+\input{docs/y-contributions}
+
+% SI at the end
+\input{docs/SI/.si-content.tex}
+
+\section*{References}
+\bibliography{refs/biblio}
+
+% End doc
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
