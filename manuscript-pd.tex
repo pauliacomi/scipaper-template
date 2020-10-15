@@ -1,4 +1,5 @@
 % Alt master file to be processed with Pandoc
+% Requires pandoc version 2.11+
 
 % Documentclass
 \documentclass[9pt, twocolumn, lineno]{templates/pi/pi-article}
@@ -18,26 +19,11 @@
 % Chemical equations are surrounded by math
 \renewcommand{\ce}[1]{\(\\ce{#1}\)}
 
-% SIrange becomes SIRange (TODO remove next pandoc version)
-\renewcommand{\SIrange}[3]{\SIRange{#1}{#2}{#3}}
-
-% si{} becomes blank SI{}{} (TODO remove next pandoc version)
-\renewcommand{\si}[1]{\SI{}{#1}}
-
 % copyright added
 \renewcommand{\textcopyright}[0]{©}
 
-% angstrom added
-\renewcommand{\angstrom}[0]{Å}
-
-% using cleveref as it is picked up by pandoc
-\renewcommand{\autoref}[1]{\cref{#1}}
-
 % making the figure* environment a regular figure environment
 \newenvironment{figure2col}{\begin{figure}}{\end{figure}}
-
-% SI
-\externaldocument{manuscript-SI}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -46,7 +32,12 @@
 % Doc input
 \input{templates/pi/pi-doc}
 
+% Abstract
+\section{Abstract}
+\input{docs/0-abstract.tex}
+
 % Content
+\section{Main Content}
 \input{docs/.content.tex}
 
 % Doc end input
@@ -57,6 +48,11 @@
 \input{docs/y-contributions}
 
 % SI at the end
+\section{Supplementary Information}
+\newcommand{\oldsection}[1]{\section{#1}}
+\renewcommand{\section}[1]{\subsection{#1}}
+\renewcommand{\subsection}[1]{\subsubsection{#1}}
+% \renewcommand{\subsubsection}[1]{\textit{#1}}
 \input{docs/SI/.si-content.tex}
 
 \section*{References}
