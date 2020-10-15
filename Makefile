@@ -15,7 +15,7 @@ PANDOC_READER_OPTIONS  += --defaults=templates/pandoc/defaults/base
 PANDOC_LATEX_OPTIONS    = --pdf-engine=xelatex
 PANDOC_LATEX_OPTIONS   += --variable=documentclass:$(CLASS_FILE_LATEX)
 PANDOC_LATEX_OPTIONS   += --natbib
-PANDOC_LATEX_OPTIONS   += --filter=pandoc-citeproc
+PANDOC_LATEX_OPTIONS   += --filter=citeproc
 
 # PANDOC_HTML_OPTIONS     = --toc --self-contained
 PANDOC_HTML_OPTIONS     = --toc
