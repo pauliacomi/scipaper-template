@@ -23,10 +23,12 @@ PANDOC_EPUB_OPTIONS     = --toc
 
 PANDOC_DOCX_OPTIONS	   := --lua-filter=./scripts/pd-chem-filter.lua $(PANDOC_WRITER_OPTIONS)
 
-DEFAULT_EXTENSIONS    ?= html doc tex pdf
+OUTFILE_PREFIX          = index
+DEFAULT_EXTENSIONS    ?= html doc
 
 include $(PANDOC_SCHOLAR_PATH)/Makefile
 
+.PHONY: tex2md
 tex2md:
 	pandoc -s $(TEX_FILE) -o $(ARTICLE_FILE) \
 	--from latex \
