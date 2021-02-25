@@ -10,3 +10,12 @@ if FORMAT:match 'markdown' then
   end
 
 end
+
+-- Filter images with this function if the target format is HTML
+if FORMAT:match 'html' then
+  function Image(elem)
+    elem.attributes.style = 'cursor:pointer'
+    elem.attributes.onclick = 'onClickImage(this)'
+    return elem
+  end
+end

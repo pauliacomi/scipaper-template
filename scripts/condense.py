@@ -146,8 +146,9 @@ def expand_meta(text):
     for hit in re.finditer(NEWCOMM_RE, itertext):
         arg1_o = hit.end() + 1
         arg1_e = arg1_o + find_close_bracket(itertext[arg1_o:])
-        arg2_o = arg1_e + 2
-        arg2_e = arg2_o + find_close_bracket(itertext[arg2_o:])
+        if itertext[arg1_e + 1] == "{":
+            arg2_o = arg1_e + 2
+            arg2_e = arg2_o + find_close_bracket(itertext[arg2_o:])
 
         command = itertext[arg1_o:arg1_e]
         value = itertext[arg2_o:arg2_e]
@@ -245,7 +246,7 @@ def copy_files(source, target, style):
                         (target / 'head_foot'))
 
 
-def main(source_dir, output_dir='./processed/'):
+def main(source_dir, output_dir='./condensed/'):
 
     # define source and output dirs
     source_dir = pathlib.Path(source_dir)

@@ -1,0 +1,63 @@
+---
+author:
+    - Paul Iacomi:
+        institute:
+          - ICGM
+    - Ji Sun Lee:
+        institute:
+          - KRICT
+    - Luis Vanduyfhuys:
+        institute:
+          - Ghent
+    - Kyung Ho Cho:
+        institute:
+          - KRICT
+    - Pierre Fertey:
+        institute:
+          - Soleil
+    - Jelle Wieme:
+        institute:
+          - Ghent
+    - Dominique Granier:
+        institute:
+          - ICGM
+    - Guillaume Maurin:
+        institute:
+          - ICGM
+    - Veronique Van Speybroeck:
+        institute:
+          - Ghent
+    - Jong-San Chang:
+        institute:
+          - KRICT
+    - Pascal G. Yot:
+        institute:
+          - ICGM
+        email: pascal.yot@umontpellier.fr
+        correspondence: "yes"
+institute:
+  - ICGM:
+        name: Institute Charles Gerhardt Montpellier (ICGM)
+        address: Bat.15, Place Eugène Bataillon, 34095 Montpellier Cedex 5, France
+  - KRICT:
+        name: Korea Research Institute of Chemical Technology (KRICT)
+        address: Gajeong-ro 141, Yuseong-gu, Daejeon 34114, South Korea
+  - Ghent:
+        name: Center for Molecular Modeling (CMM)
+        address: Ghent University, Technologiepark 903, 9052 Zwijnaarde, Belgium
+  - Soleil:
+        name: Synchrotron Soleil
+        address: Gif-sur-Yvette, France
+project:
+    title: project
+link-citations: true
+number-sections: true
+# XNOS settings / deprecated
+xnos-capitalise: true
+xnos-number-by-section: false
+# CROSSREF settings
+linkReferences: true # Make references hyperlinks to the referenced element
+autoEqnLabels: true # Automatically number all display equations (i.e. ones defined using $$...$$/\[...\]). 
+
+cref: false
+---

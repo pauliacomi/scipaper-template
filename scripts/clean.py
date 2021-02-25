@@ -19,7 +19,8 @@ def main(source_dir):
 
 if __name__ == "__main__":
     arguments = docopt.docopt(__doc__)
-    directory = arguments["<directory>"] or (pathlib.Path(
-        __file__).parent.parent / 'processed')
+    directory = arguments["<directory>"] or (
+        pathlib.Path(__file__).parent.parent / 'condensed'
+    )
     # output_dir = arguments["--output_dir"] or None
     main(directory)
