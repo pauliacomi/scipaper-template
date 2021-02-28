@@ -1,9 +1,10 @@
 ---
-title: This is the paper title
+title: "This is the paper title"
 author:
   - Paul Iacomi:
       institute:
-        - a, b
+        - a
+        - b
       orcid: 0000-0001-5477-1503
       email: mail@pauliacomi.com
       correspondence: "yes"

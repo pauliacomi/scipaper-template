@@ -5,7 +5,8 @@ author:
     email: mail\@pauliacomi.com
     equal_contributor: yes
     institute:
-    - a, b
+    - a
+    - b
     orcid: 0000-0001-5477-1503
 - Someone Else:
     equal_contributor: yes

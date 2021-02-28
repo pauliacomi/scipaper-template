@@ -44,13 +44,16 @@ def read_meta(metafile):
         )
         if not m_type:
             continue
-        elif m_type not in [r"\pubtitle", r"\pubemail", r"\contribution"]:
-            m_no = m_typeno[-1].lower()
-            metadata[meta_types[m_type]][m_no] = m_val
         elif m_type in [r"\pubemail", r"\contribution"]:
             metadata[meta_types[m_type]].append(m_val[-1].lower())
-        else:
+        elif m_type == r"\pubtitle":
             metadata[meta_types[m_type]] = m_val
+        elif m_type == r"\pubaffil":
+            metadata[meta_types[m_type]][m_no] = m_val.replace(" ",
+                                                               "").split(",")
+        else:
+            m_no = m_typeno[-1].lower()
+            metadata[meta_types[m_type]][m_no] = m_val
 
     return metadata
 
@@ -62,12 +65,13 @@ def write_meta(meta, metafile):
 
     with open(metafile, 'w', encoding='utf8') as f:
         f.write("---\n")
-        f.write(f"title: {meta['title']}\n")
+        f.write(f"title: \"{meta['title']}\"\n")
         f.write("author:\n")
         for a in meta['author']:
             f.write(f"  - {meta['author'][a]}:\n")
             f.write("      institute:\n")
-            f.write(f"        - {meta['affil'][a]}\n")
+            for aff in meta['affil'][a]:
+                f.write(f"        - {aff}\n")
             if meta['orcid'].get(a, None):
                 f.write(f"      orcid: {meta['orcid'][a]}\n")
             if meta['email'].get(a, None):
