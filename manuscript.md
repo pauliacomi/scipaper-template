@@ -1,17 +1,20 @@
 ---
 author:
 - Paul Iacomi:
+    correspondence: yes
+    email: mail\@pauliacomi.com
+    equal_contributor: yes
     institute:
     - a, b
     orcid: 0000-0001-5477-1503
 - Someone Else:
+    equal_contributor: yes
     institute:
     - a
     orcid: 0000-0001-5124-7052
 autoEqnLabels: true
 bibliography:
 - refs/biblio.bib
-cref: false
 institute:
 - a:
     name: My current affiliation, with address and everything.
@@ -24,12 +27,13 @@ project:
   title: project
 title: This is the paper title
 xnos-capitalise: true
-xnos-number-by-section: false
 ---
 
-# Abstract
+Abstract
+========
 
-# Introduction
+Introduction
+============
 
 Herein we refer to a table ([@tbl:example-table]), but also to a figure ([@fig:caption-1]) or a
 latter equation ([@eqn:example]). Finally, figures ([@fig:caption-si]) from the SI can also be
@@ -46,7 +50,8 @@ Equations are in a standard Latex `equation` environment.
 $$\label{eqn:example}
     e^{i\pi} + 1 = 0$$
 
-# Materials and methods
+Materials and methods
+=====================
 
 ::: {#tbl:example-table}
                 Head 1                 Head 2            Head 3
@@ -58,29 +63,37 @@ $$\label{eqn:example}
   :  An example table, with caption on top.
 :::
 
-# Results and discussion
+Results and discussion
+======================
 
 ![ Example small figure and its caption. ](figs/example-image.png){#fig:caption-1
 width="0.9\\linewidth"}
 
-::: {.figure*}
-![image](figs/example-image.png){width="0.9\\linewidth"}
-:::
+![ Example twocolumn large figure. ](figs/example-image.png){#fig:caption-2 width="0.9\\linewidth"}
 
-# Conclusions
+Conclusions
+===========
 
-# Acknowledgements {#acknowledgements .unnumbered}
+Acknowledgements {#acknowledgements .unnumbered}
+================
 
-# Author contributions {#author-contributions .unnumbered}
+Author contributions {#author-contributions .unnumbered}
+====================
 
-# SI section 1
+Supplementary Information
+=========================
 
-[@example]
+SI section 1
+------------
+
+Here is a citation. [@example]
 
 ![ Example caption. ](figs/example-image.png){#fig:caption-si width="0.9\\linewidth"}
 
-# SI section 2
+SI section 2
+------------
 
 We are referring to previous [@fig:caption-si].
 
-# References {#references .unnumbered}
+References {#references .unnumbered}
+==========

@@ -5,10 +5,14 @@ author:
       institute:
         - a, b
       orcid: 0000-0001-5477-1503
+      email: mail@pauliacomi.com
+      correspondence: "yes"
+      equal_contributor: "yes"
   - Someone Else:
       institute:
         - a
       orcid: 0000-0001-5124-7052
+      equal_contributor: "yes"
 institute:
   - a:
       name: My current affiliation, with address and everything.
