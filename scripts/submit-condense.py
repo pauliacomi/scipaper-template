@@ -3,7 +3,7 @@
 Usage: condense [--output_dir=<output_dir>] [<directory>]
 """
 
-import docopt
+import argparse
 import pathlib
 import shutil
 import re
@@ -137,33 +137,42 @@ def expand(text):
 def expand_meta(text):
 
     replaced = [
-        r'\pubauth', r'\pubaffil', r'\pubaddr', r'\orcid', r'\pubemail',
-        r'\pubkeywords', r'\pubSI', r'\pubtitle'
+        r'\pubauth',
+        r'\pubaffil',
+        r'\pubaddr',
+        r'\orcid',
+        r'\pubkeywords',
+        r'\pubSI',
+        r'\pubtitle',
+        r'\dg',
+        r'\eqcontrib',
+        r'\authemail',
+        r'\pubemail',
     ]
 
-    replaced_vals = []
-    itertext = text
-    for hit in re.finditer(NEWCOMM_RE, itertext):
-        arg1_o = hit.end() + 1
-        arg1_e = arg1_o + find_close_bracket(itertext[arg1_o:])
-        if itertext[arg1_e + 1] == "{":
-            arg2_o = arg1_e + 2
-            arg2_e = arg2_o + find_close_bracket(itertext[arg2_o:])
+    for r in replaced:
+        replaced_vals = []
+        for hit in NEWCOMM_RE.finditer(text):
+            arg1_o = hit.end() + 1
+            arg1_e = arg1_o + find_close_bracket(text[arg1_o:])
+            if text[arg1_e + 1] == "{":
+                arg2_o = arg1_e + 2
+                arg2_e = arg2_o + find_close_bracket(text[arg2_o:])
 
-        command = itertext[arg1_o:arg1_e]
-        value = itertext[arg2_o:arg2_e]
+            command = text[arg1_o:arg1_e]
+            value = text[arg2_o:arg2_e]
 
-        if any([command.startswith(com) for com in replaced]):
-            replaced_vals.append([command, value, hit.start(), arg2_e + 1])
+            if command.startswith(r):
+                replaced_vals.append([command, value, hit.start(), arg2_e + 1])
 
-    text = ''.join([
-        chr for idx, chr in enumerate(text, 1) if not any(
-            strt_idx <= idx <= end_idx
-            for _, _, strt_idx, end_idx in replaced_vals
-        )
-    ])
-    for val in replaced_vals:
-        text = text.replace(val[0], val[1])
+        text = ''.join([
+            chr for idx, chr in enumerate(text, 1) if not any(
+                strt_idx <= idx <= end_idx
+                for _, _, strt_idx, end_idx in replaced_vals
+            )
+        ])
+        for val in replaced_vals:
+            text = text.replace(val[0], val[1])
 
     return text
 
@@ -182,6 +191,13 @@ def clean(text, style):
         r"\newenvironment{widefigure}{\begin{figure*}}{\end{figure*}}", ""
     )
     text = text.replace("widefigure", "figure*")
+    text = text.replace(
+        r"\newenvironment{widetable}{\begin{table*}}{\end{table*}}", ""
+    )
+    text = text.replace("widetable", "table*")
+
+    # remove comment lines
+    text = re.sub(r'(?<!\\)%.*', r'', text)
 
     # remove superfluous newlines
     text = re.sub(r'\n\s*\n', r'\n\n', text)
@@ -280,7 +296,16 @@ def main(source_dir, output_dir='./condensed/'):
 
 
 if __name__ == "__main__":
-    arguments = docopt.docopt(__doc__)
-    directory = arguments["<directory>"
-                          ] or pathlib.Path(__file__).parent.parent
-    main(directory)
+    parser = argparse.ArgumentParser(
+        description='Condense manuscript to a single file.'
+    )
+    parser.add_argument(
+        '--source', type=str, default=pathlib.Path(__file__).parent.parent
+    )
+    parser.add_argument(
+        '--dest',
+        type=str,
+        default=pathlib.Path(__file__).parent.parent / 'condensed'
+    )
+    args = parser.parse_args()
+    main(args.source, args.dest)

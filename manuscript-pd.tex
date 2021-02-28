@@ -4,26 +4,29 @@
 % Documentclass
 \documentclass[9pt, twocolumn, lineno]{templates/pi/pi-article}
 
+% Graphics
+\graphicspath{ {figs/} }
+\DeclareGraphicsExtensions{.png}
+
 % Metadata
 \input{templates/metadata}
 
 % Preamble
 \input{templates/pi/pi-preamble}
 
-% Graphics
-\graphicspath{ {figs/} }
-\DeclareGraphicsExtensions{.png}
-
 % Fixes for Pandoc conversion
 %
 % Chemical equations are surrounded by math
 \renewcommand{\ce}[1]{\(\\ce{#1}\)}
-
+%
 % copyright added
 \renewcommand{\textcopyright}[0]{©}
-
+%
 % Remaking the figure* environment to a regular figure environment
 \newenvironment{widefigure}{\begin{figure}}{\end{figure}}
+%
+% Remaking the table* environment to a regular table environment
+\newenvironment{widetable}{\begin{table}}{\end{table}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -37,7 +40,6 @@
 \input{docs/0-abstract.tex}
 
 % Content
-\section{Main Content}
 \input{docs/.content.tex}
 
 % Doc end input
@@ -48,14 +50,9 @@
 \input{docs/y-contributions}
 
 % SI at the end
-\section{Supplementary Information}
-\newcommand{\oldsection}[1]{\section{#1}}
-\renewcommand{\section}[1]{\subsection{#1}}
-\renewcommand{\subsection}[1]{\subsubsection{#1}}
-% \renewcommand{\subsubsection}[1]{\textit{#1}}
 \input{docs/SI/.si-content.tex}
 
-\section*{References}
+\section{References}
 \bibliography{refs/biblio}
 
 % End doc

@@ -13,6 +13,12 @@
     \documentclass[journal=cmatex,manuscript=article]{achemso}
 \fi
 
+% Graphics
+\graphicspath{ {figs/} }
+
+% SI
+\externaldocument{manuscript-SI}
+
 % Metadata
 \input{templates/metadata}
 
@@ -27,14 +33,11 @@
     \input{templates/acs/acs-preamble}
 \fi
 
-% Graphics
-\graphicspath{ {figs/} }
-
-% Defining how to use a wide (2col figure)
+% Defining a 2 col figure (due to pandoc incompat)
 \newenvironment{widefigure}{\begin{figure*}}{\end{figure*}}
 
-% SI
-\externaldocument{manuscript-SI}
+% Defining a 2 col table (due to pandoc incompat)
+\newenvironment{widetable}{\begin{table*}}{\end{table*}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

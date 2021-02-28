@@ -1,9 +1,9 @@
 """Zip manuscript folder.
 
-Usage: zip [--output_dir=<output_dir>] [<directory>]
+Usage: zip [--source=<output_dir>] [--dest=<destination_dir>]
 """
 
-import docopt
+import argparse
 import pathlib
 import shutil
 
@@ -52,9 +52,17 @@ def main(source_dir, output_file='./manuscript'):
 
 
 if __name__ == "__main__":
-    arguments = docopt.docopt(__doc__)
-    directory = arguments["<directory>"] or (
-        pathlib.Path(__file__).parent.parent / 'condensed'
+    parser = argparse.ArgumentParser(description='Zip submission files.')
+    parser.add_argument(
+        '--source',
+        type=str,
+        default=pathlib.Path(__file__).parent.parent / 'condensed'
     )
-    # output_dir = arguments["--output_dir"] or None
-    main(directory)
+    parser.add_argument(
+        '--dest',
+        type=str,
+        default=pathlib.Path(__file__).parent.parent / 'condensed' /
+        'manuscript'
+    )
+    args = parser.parse_args()
+    main(args.source, args.dest)

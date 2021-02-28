@@ -3,6 +3,8 @@ TEX_FILE_MASTER     = manuscript.tex
 TEX_FILE_SI         = manuscript-si.tex
 TEX_FILE_PANDOC     = manuscript-pd.tex
 ARTICLE_FILE        = manuscript.md
+TEX_META_FILE       = templates/metadata.tex
+PANDOC_META_FILE    = templates/metadata-pd.yaml
 
 # Programs used
 TEX_ENGINE 	        = xelatex
@@ -58,20 +60,19 @@ SVGS = $(wildcard figs/*.svg)
 svg2fig: $(SVGS)
 	$(PYTHON) ./scripts/inkscape-convert.py $(SVGS)
 
-# Building with latexmk
+# Making a pandoc markdown file
 .PHONY: tex2md
 tex2md:
-	$(PYTHON) ./scripts/pd-meta.py
+	$(PYTHON) ./scripts/pd-meta.py --tex $(TEX_META_FILE) --yaml $(PANDOC_META_FILE)
 	pandoc -s $(TEX_FILE_PANDOC) -o $(ARTICLE_FILE) \
-	--from latex \
-	--to markdown+smart+grid_tables \
-	--default-image-extension=".png" \
-	--citeproc \
+	--from latex --to markdown+smart+grid_tables \
+	--metadata-file $(PANDOC_META_FILE) \
 	--lua-filter=./scripts/pd-image-filter.lua \
 	--lua-filter=./scripts/pd-chem-filter.lua \
 	--lua-filter=./scripts/pd-ref-filter.lua \
-	-H ./templates/metadata-pd.yaml \
-	--verbose --columns=100
+	--default-image-extension=".png" \
+	--verbose --columns=100 \
+	--citeproc
 
 # Making a diff of the manuscript with latexdiff
 .PHONY: diff
@@ -91,12 +92,12 @@ epub:	$(addprefix $(OUTFILE_PREFIX).,epub)
 # Submission scripts
 .PHONY: submit-condense
 submit-condense:
-	$(PYTHON) ./scripts/condense.py
+	$(PYTHON) ./scripts/submit-condense.py
 
 .PHONY: submit-zip
 submit-zip:
-	$(PYTHON) ./scripts/zip.py
+	$(PYTHON) ./scripts/submit-zip.py
 
 .PHONY: submit-clean
 submit-clean:
-	$(PYTHON) ./scripts/clean.py
+	$(PYTHON) ./scripts/submit-clean.py --dir ./condensed
