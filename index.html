@@ -119,10 +119,10 @@
           
           <div property="articleBody" class="article-body">
             <h1 id="introduction">Introduction</h1>
-            <p>Herein we refer to a table (tbl. <a href="#tbl:example-table">1</a>), but also to a figure (fig. <a href="#fig:caption-1">1</a>) or a latter equation (<span class="citation" data-cites="eqn:example"><a href="#ref-eqn:example" role="doc-biblioref"><strong>eqn:example?</strong></a></span>). Finally, figures (fig. <a href="#fig:caption-si">3</a>) from the SI can also be referenced. We can add citations as well <span class="citation" data-cites="example"><a href="#ref-example" role="doc-biblioref">[1]</a></span>. Units are inserted with the help of <code>siunitx</code>. We can have some standard data 40 kJ/mol or ranges such as 20 Å–30 Å. Finally simple unit typesetting is also possible MHz/kPa.</p>
+            <p>Herein we refer to a table (tbl. <a href="#tbl:example-table">1</a>), but also to a figure (fig. <a href="#fig:caption-1">1</a>) or a latter equation (eq. <a href="#eq:example">1</a>). Finally, figures (fig. <a href="#fig:caption-si">3</a>) from the SI can also be referenced. We can add citations as well <span class="citation" data-cites="example"><a href="#ref-example" role="doc-biblioref">[1]</a></span>. Units are inserted with the help of <code>siunitx</code>. We can have some standard data 40 kJ/mol or ranges such as 20 Å–30 Å. Finally simple unit typesetting is also possible MHz/kPa.</p>
             <p>Chemistry is included by referring to the <code>mhchem</code> package. Simple molecules like <span class="math inline">\(\ce{N2}\)</span> and <span class="math inline">\(\ce{C2H4}\)</span> should be easy to include. More complex formula typesetting is possible too: <span class="math inline">\(\ce{^{13}C}\)</span> NMR, <span class="math inline">\(\ce{CaCl2 * 12H2O}\)</span> and <span class="math inline">\(\ce{Fe^{II}Fe^{III}2O4}\)</span>.</p>
             <p>Equations are in a standard Latex <code>equation</code> environment.</p>
-            <p><span><span class="math display">\[\label{eqn:example}
+            <p><span id="eq:example"><span class="math display">\[
                 e^{i\pi} + 1 = 0\qquad(1)\]</span></span></p>
             <h1 id="materials-and-methods">Materials and methods</h1>
             <div id="tbl:example-table">
