@@ -4,7 +4,7 @@ General publication template, with some quality-of-life features. The main
 objective is to easily interchange between:
 
 1. The main manuscript/SI file, written in Latex
-2. A host of other formats: 
+2. A host of other formats:
     * PDF, compiling Latex for final manuscripts
     * DOCX, for sharing with collaborators
     * HTML, for online publishing on a static website
@@ -13,11 +13,22 @@ The Latex manuscript can also be stripped and simplified for a 1-file submission
 to a journal accepting this format. Check out the PDF
 [manuscript](./manuscript.pdf) and its [SI](./manuscript-SI.pdf).
 
-### General overview
+### Rationale
 
-I wanted to have a way of sharing
+As much as Markdown has made strides towards scientific notation, referencing
+and formatting, I found that there is no current substitute for LaTeX when it
+comes to academic publications. Moreover, most journals only accept LaTeX as an
+alternative format. As such **we keep the [main file](manuscript.tex) in TeX**.
 
+However, there's no denying that LaTeX is antiquated when it comes to reframing
+the content into other formats (such as the commonly used Microsoft Word), nor
+is it very good for making documents compatible with the Web (searchable text,
+different screen sizes, etc). **To perform this conversion, we use the excellent
+[Pandoc](https://pandoc.org)**.
 
+Pandoc's "main" markup language is Markdown. As such, conversion has two steps:
+a *lossy* conversion from `tex` to `md` (technically to Pandoc AST), followed by
+the translation of this intermediate file to any other required format.
 
 ### List of software required on path
 
